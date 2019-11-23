@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.me.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.me.org/">
+
+<xs:element name="caripengirim" type="tns:caripengirim"/>
+
+<xs:element name="caripengirimResponse" type="tns:caripengirimResponse"/>
+
+<xs:element name="operation" type="tns:operation"/>
+
+<xs:element name="operationResponse" type="tns:operationResponse"/>
+
+<xs:element name="tambahPostingan" type="tns:tambahPostingan"/>
+
+<xs:element name="tampilPostingan" type="tns:tampilPostingan"/>
+
+<xs:element name="tampilPostinganResponse" type="tns:tampilPostinganResponse"/>
+
+<xs:complexType name="tampilPostingan">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="tampilPostinganResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:postingan" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="postingan">
+<xs:sequence>
+<xs:element name="idAdmin" type="xs:string" minOccurs="0"/>
+<xs:element name="idPostingan" type="xs:string" minOccurs="0"/>
+<xs:element name="idUser" type="xs:string" minOccurs="0"/>
+<xs:element name="isi" type="xs:string" minOccurs="0"/>
+<xs:element name="namaPengirim" type="xs:string" minOccurs="0"/>
+<xs:element name="waktu" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tambahPostingan">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="postingan" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="caripengirim">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="caripengirimResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="operation">
+<xs:sequence>
+<xs:element name="userDB" type="xs:string" minOccurs="0"/>
+<xs:element name="passDB" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="operationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
