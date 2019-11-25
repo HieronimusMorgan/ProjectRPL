@@ -97,9 +97,8 @@ public class home extends HttpServlet {
 
         posting = a.tampilPostingan();
         for (int i = 0; i < posting.size(); i++) {
-
             out.print("<div class=\"card\">\n");
-            out.print(" <h1>" + posting.get(i).getNamaPengirim() + "</h1>\n");
+            out.print(" <h1>" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h1>\n");
             out.print("<h5>" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
                     + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
                     + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
@@ -127,9 +126,6 @@ public class home extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         pengguna pengguna = a.operation(username, password);
-        System.out.println(pengguna.getIdUser());
-        System.out.println(pengguna.getUsername());
-        System.out.println(pengguna.getPassword());
         if (a.cekUser(pengguna)) {
             HttpSession session = request.getSession();
             session.setAttribute("username", pengguna.getUsername());
@@ -141,7 +137,7 @@ public class home extends HttpServlet {
             session.setAttribute("username", pengguna.getUsername());
             session.setAttribute("password", pengguna.getPassword());
             session.setAttribute("iduser", pengguna.getIdUser());
-            response.sendRedirect("homeAdmin");
+            response.sendRedirect("home");
         } else {
             request.setAttribute("errorMessage", "Invalid user or password");
             response.sendRedirect("index.html");
