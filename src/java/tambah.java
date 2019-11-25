@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebServiceRef;
-import org.me.service.Postingan;
-import org.me.service.WebServiceRPL_Service;
+import operation.operation;
 
 /**
  *
@@ -23,8 +21,7 @@ import org.me.service.WebServiceRPL_Service;
 @WebServlet(urlPatterns = {"/tambah"})
 public class tambah extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WebServiceRPL/WebServiceRPL.wsdl")
-    private WebServiceRPL_Service service;
+    operation a = new operation();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -67,10 +64,10 @@ public class tambah extends HttpServlet {
         HttpSession session = request.getSession(false);
         String username = (String) session.getAttribute("username");
         String password = (String) session.getAttribute("password");
+        String iduser = (String) session.getAttribute("iduser");
         String posting = request.getParameter("posting");
-       
-        tambahPostingan(username, password, posting);
-
+        System.out.println(posting);
+        a.tambahPostingan(username, password, iduser, posting);
         response.sendRedirect("home");
     }
 
@@ -97,19 +94,5 @@ public class tambah extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private Boolean operation(java.lang.String userDB, java.lang.String passDB) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        org.me.service.WebServiceRPL port = service.getWebServiceRPLPort();
-        return port.operation(userDB, passDB);
-    }
-
-    private void tambahPostingan(java.lang.String username, java.lang.String password, java.lang.String postingan) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        org.me.service.WebServiceRPL port = service.getWebServiceRPLPort();
-        port.tambahPostingan(username, password, postingan);
-    }
 
 }

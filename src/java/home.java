@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebServiceRef;
-import org.me.service.WebServiceRPL_Service;
+import object.pengguna;
+import object.postingan;
+import operation.*;
 
 /**
  *
@@ -22,8 +23,7 @@ import org.me.service.WebServiceRPL_Service;
 @WebServlet(urlPatterns = {"/home"})
 public class home extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WebServiceRPL/WebServiceRPL.wsdl")
-    private WebServiceRPL_Service service;
+    operation a = new operation();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -93,16 +93,16 @@ public class home extends HttpServlet {
                 + "        <div class=\"row\">\n"
                 + "            <div class=\"leftcolumn\">\n"
         );
-        java.util.List<org.me.service.Postingan> posting;
-        posting = tampilPostingan();
+        java.util.List<postingan> posting;
 
+        posting = a.tampilPostingan();
         for (int i = 0; i < posting.size(); i++) {
 
             out.print("<div class=\"card\">\n");
             out.print(" <h1>" + posting.get(i).getNamaPengirim() + "</h1>\n");
-            out.print("<h5>" + posting.get(i).getWaktu().getEonAndYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
-                    + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHour() + ":"
-                    + posting.get(i).getWaktu().getMinute() + ":" + posting.get(i).getWaktu().getSecond() + "</h5>");
+            out.print("<h5>" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
+                    + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
+                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
             out.print(" <p>" + posting.get(i).getIsi() + "</p>\n");
             out.print("                </div>\n");
         }
@@ -126,17 +126,26 @@ public class home extends HttpServlet {
         PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (operation(username, password)) {
+        pengguna pengguna = a.operation(username, password);
+        System.out.println(pengguna.getIdUser());
+        System.out.println(pengguna.getUsername());
+        System.out.println(pengguna.getPassword());
+        if (a.cekUser(pengguna)) {
             HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setAttribute("password", password);
-
+            session.setAttribute("username", pengguna.getUsername());
+            session.setAttribute("password", pengguna.getPassword());
+            session.setAttribute("iduser", pengguna.getIdUser());
             response.sendRedirect("home");
+        } else if (!a.cekUser(pengguna)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", pengguna.getUsername());
+            session.setAttribute("password", pengguna.getPassword());
+            session.setAttribute("iduser", pengguna.getIdUser());
+            response.sendRedirect("homeAdmin");
         } else {
             request.setAttribute("errorMessage", "Invalid user or password");
             response.sendRedirect("index.html");
         }
-
     }
 
     /**
@@ -148,19 +157,5 @@ public class home extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private Boolean operation(java.lang.String userDB, java.lang.String passDB) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        org.me.service.WebServiceRPL port = service.getWebServiceRPLPort();
-        return port.operation(userDB, passDB);
-    }
-
-    private java.util.List<org.me.service.Postingan> tampilPostingan() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        org.me.service.WebServiceRPL port = service.getWebServiceRPLPort();
-        return port.tampilPostingan();
-    }
 
 }

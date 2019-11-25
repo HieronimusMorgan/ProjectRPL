@@ -10,14 +10,14 @@
 <message name="operationResponse">
 <part name="parameters" element="tns:operationResponse"/>
 </message>
-<message name="tambahPostingan">
-<part name="parameters" element="tns:tambahPostingan"/>
-</message>
 <message name="tampilPostingan">
 <part name="parameters" element="tns:tampilPostingan"/>
 </message>
 <message name="tampilPostinganResponse">
 <part name="parameters" element="tns:tampilPostinganResponse"/>
+</message>
+<message name="tambahPostingan">
+<part name="parameters" element="tns:tambahPostingan"/>
 </message>
 <message name="caripengirim">
 <part name="parameters" element="tns:caripengirim"/>
@@ -25,21 +25,31 @@
 <message name="caripengirimResponse">
 <part name="parameters" element="tns:caripengirimResponse"/>
 </message>
+<message name="acs">
+<part name="parameters" element="tns:acs"/>
+</message>
+<message name="acsResponse">
+<part name="parameters" element="tns:acsResponse"/>
+</message>
 <portType name="WebServiceRPL">
 <operation name="operation">
 <input wsam:Action="http://service.me.org/WebServiceRPL/operationRequest" message="tns:operation"/>
 <output wsam:Action="http://service.me.org/WebServiceRPL/operationResponse" message="tns:operationResponse"/>
 </operation>
-<operation name="tambahPostingan">
-<input wsam:Action="http://service.me.org/WebServiceRPL/tambahPostingan" message="tns:tambahPostingan"/>
-</operation>
 <operation name="tampilPostingan">
 <input wsam:Action="http://service.me.org/WebServiceRPL/tampilPostinganRequest" message="tns:tampilPostingan"/>
 <output wsam:Action="http://service.me.org/WebServiceRPL/tampilPostinganResponse" message="tns:tampilPostinganResponse"/>
 </operation>
+<operation name="tambahPostingan">
+<input wsam:Action="http://service.me.org/WebServiceRPL/tambahPostingan" message="tns:tambahPostingan"/>
+</operation>
 <operation name="caripengirim">
 <input wsam:Action="http://service.me.org/WebServiceRPL/caripengirimRequest" message="tns:caripengirim"/>
 <output wsam:Action="http://service.me.org/WebServiceRPL/caripengirimResponse" message="tns:caripengirimResponse"/>
+</operation>
+<operation name="acs">
+<input wsam:Action="http://service.me.org/WebServiceRPL/acsRequest" message="tns:acs"/>
+<output wsam:Action="http://service.me.org/WebServiceRPL/acsResponse" message="tns:acsResponse"/>
 </operation>
 </portType>
 <binding name="WebServiceRPLPortBinding" type="tns:WebServiceRPL">
@@ -53,12 +63,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="tambahPostingan">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
 <operation name="tampilPostingan">
 <soap:operation soapAction=""/>
 <input>
@@ -68,7 +72,22 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="tambahPostingan">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
 <operation name="caripengirim">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="acs">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

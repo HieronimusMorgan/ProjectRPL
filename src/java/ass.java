@@ -19,18 +19,7 @@ public class ass {
         String s = String.valueOf(timestamp);
         System.out.println(s);
         
-        tambahPostingan("175314080", "admin", "dsdssdacxzczxczcrtr");
     }
 
-    private static String caripengirim(java.lang.String arg0, java.lang.String arg1) {
-        org.me.service.WebServiceRPL_Service service = new org.me.service.WebServiceRPL_Service();
-        org.me.service.WebServiceRPL port = service.getWebServiceRPLPort();
-        return port.caripengirim(arg0, arg1);
-    }
-
-    private static void tambahPostingan(java.lang.String username, java.lang.String password, java.lang.String postingan) {
-        org.me.service.WebServiceRPL_Service service = new org.me.service.WebServiceRPL_Service();
-        org.me.service.WebServiceRPL port = service.getWebServiceRPLPort();
-        port.tambahPostingan(username, password, postingan);
-    }
+    
 }
