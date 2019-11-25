@@ -111,7 +111,6 @@ public class operation {
                     p.setIdAdmin(result.getString("idAdmin"));
                     java.sql.Timestamp s = result.getTimestamp("waktuPostingan");
                     p.setWaktu(s);
-                    p.setNamaPengirim(caripengirim(p.getIdUser(), p.getIdAdmin()));
                     data.add(p);
                 }
             }
