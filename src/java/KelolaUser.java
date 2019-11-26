@@ -6,12 +6,14 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import object.pengguna;
 
 /**
  *
@@ -62,6 +64,8 @@ public class KelolaUser extends HttpServlet {
 //        HttpSession session = request.getSession(false);
 //        String coba = (String) session.getAttribute("username");
 //        session.getAttribute("password");
+        ArrayList<pengguna> data = new ArrayList<pengguna>();
+
         out.print("<html>\n"
                 + "<head>\n"
                 + "<title>FaceIT</title>\n"
@@ -101,9 +105,44 @@ public class KelolaUser extends HttpServlet {
                 + "<input type=\"submit\" name=\"Hapus\" value=\"Hapus\" onclick=\"form.action='HapusUser';\">\n"
                 + "</form>\n"
                 + "</div>\n"
-                + "</body>\n"
-                + "\n"
-                + "</html>");
+                + "</body>");
+        
+        try {
+            if (data.size() != 0) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Tampil</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<center>");
+                out.println("<h1>Data User</h1>");
+                out.println("<table border=3>");
+                out.println("<tr>");
+                out.println("<td>ID User</td>");
+                out.println("<td>Nama</td>");
+                out.println("<td>Username</td>");
+                out.println("<td>Password Date</td>");
+                out.println("</tr>");
+
+                for (int i = 0; i < data.size(); i++) {
+                    out.println("<tr>");
+                    out.println("<td>" + data.get(i).getIdUser() + "</td>");
+                    out.println("<td>" + data.get(i).getName() + "</td>");
+                    out.println("<td>" + data.get(i).getUsername() + "</td>");
+                    out.println("<td>" + data.get(i).getPassword() + "</td>");
+                    out.println("</tr>");
+                }
+
+                out.println("</table>");
+                out.println("</center>");
+                out.println("</body>");
+            } 
+        } finally {
+            out.close();
+        }
+        
+        
         out.print("</div>\n");
         out.print("</div>\n"
                 + "</div>\n"

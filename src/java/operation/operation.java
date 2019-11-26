@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.jws.WebParam;
 import object.*;
 
 /**
@@ -177,7 +178,7 @@ public class operation {
     public void hapusUser(pengguna p) {
         try {
             conn = new DatabaseConnection();
-            String sql = "DELETE FROM PENGGUNA WHERE IDUSER = '" + p.getIdUser() + "'";
+            String sql = "DELETE FROM USER WHERE IDUSER = '" + p.getIdUser() + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
             stat.close();
@@ -201,6 +202,29 @@ public class operation {
         } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public ArrayList<pengguna> tampilPenggunaWP() {
+        //TODO write your implementation code here:
+        conn = new DatabaseConnection();
+        ArrayList<pengguna> data = new ArrayList<pengguna>();
+        try {
+            String query = "SELECT * FROM USER";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+                pengguna p = new pengguna();
+                p.setUsername(result.getString("NIM"));
+                p.setPassword(result.getString("NIM"));
+                p.setName(result.getString("nama"));
+                data.add(p);
+            }
+            statement.close();
+        } catch (Exception ex) {
+            System.out.println("Gagal");
+        }
+        return data;
     }
 
 }
