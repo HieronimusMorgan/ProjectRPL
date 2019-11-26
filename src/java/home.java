@@ -131,12 +131,14 @@ public class home extends HttpServlet {
             session.setAttribute("username", pengguna.getUsername());
             session.setAttribute("password", pengguna.getPassword());
             session.setAttribute("iduser", pengguna.getIdUser());
+            session.setAttribute("nameuser", pengguna.getName());
             response.sendRedirect("home");
         } else if (!a.cekUser(pengguna)) {
             HttpSession session = request.getSession();
             session.setAttribute("username", pengguna.getUsername());
             session.setAttribute("password", pengguna.getPassword());
             session.setAttribute("iduser", pengguna.getIdUser());
+            session.setAttribute("nameadmin", pengguna.getName());
             response.sendRedirect("homeAdmin");
         } else {
             request.setAttribute("errorMessage", "Invalid user or password");

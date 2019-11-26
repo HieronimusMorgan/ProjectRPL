@@ -257,6 +257,37 @@ public class operation {
         }
         return data;
     }
+
+    public pengguna cariUser(String username, String password) {
+        try {
+            String query = "SELECT * FROM user WHERE usernameUser LIKE '" + username + "'";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            if (result.first()) {
+                pengguna p = new pengguna();
+                p.setIdUser(result.getString("idUser"));
+                p.setUsername(result.getString("usernameUser"));
+                p.setPassword(result.getString("passwordUser"));
+                p.setName(result.getString("nameUser"));
+                return p;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }   
     
+    public void hapusKomentar(komentar k) {
+        try {
+            conn = new DatabaseConnection();
+            String sql = "DELETE FROM KOMENTAR WHERE idkomentar = '" + k.getIdKomentar()+ "'";
+            java.sql.Statement stat = conn.getConnection().createStatement();
+            stat.executeUpdate(sql);
+            stat.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
