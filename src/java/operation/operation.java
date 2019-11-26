@@ -70,20 +70,20 @@ public class operation {
 
     public String cariPengirim(String idUser, String idAdmin) {
         try {
-            String query = "SELECT a.nameUser FROM user a , postingan b WHERE b.idUser OR a.idUser LIKE '" + idUser + "='";
+            String query = "SELECT a.nameUser FROM user a , postingan b WHERE b.idUser OR a.idUser LIKE '" + idUser + "'";
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
             if (result.first()) {
-                System.out.println(result.getString("nameUser"));
+                System.out.println(result.getString("nameUser") + " user");
                 return result.getString("nameUser");
             } else {
-                String query1 = "SELECT a.nameAdmin FROM admin a , postingan b WHERE b.idAdmin OR a.idAdmin LIKE '" + idAdmin + "='";
+                String query1 = "SELECT a.nameAdmin FROM admin a , postingan b WHERE b.idAdmin OR a.idAdmin LIKE '" + idAdmin + "'";
                 java.sql.Statement statement1 = conn.getConnection().createStatement();
                 java.sql.ResultSet result1 = statement1.executeQuery(query1);
                 result1.next();
                 if (result1.first()) {
-                    System.out.println(result.getString("nameAdmin"));
+                    System.out.println(result.getString("nameAdmin") + " user");
                     return result.getString("nameAdmin");
                 }
             }
@@ -105,9 +105,10 @@ public class operation {
 
                 while (result.next()) {
                     postingan p = new postingan();
-                    p.setIdPostingan(result.getString("idPostingan"));                    
+                    p.setIdPostingan(result.getString("idPostingan"));
                     p.setIsi(result.getString("isiPostingan"));
                     p.setIdUser(result.getString("idUser"));
+                    System.out.println(p.getIdUser());
                     p.setIdAdmin(result.getString("idAdmin"));
                     java.sql.Timestamp s = result.getTimestamp("waktuPostingan");
                     p.setWaktu(s);
@@ -147,7 +148,6 @@ public class operation {
 
     public void tambahPostingan(String username, String password, String iduser, String postingan) {
         conn = new DatabaseConnection();
-        String id;
         Timestamp date = new Timestamp(System.currentTimeMillis());
         System.out.println(caripengirim(username, username));
         try {
@@ -172,32 +172,6 @@ public class operation {
         } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        if (caripengirim(username, username).equalsIgnoreCase(username)) {
-//            try {
-//                id = "234";
-//                String idposting = date.getTime() + "" + id;
-//                String query = "INSERT INTO POSTINGAN (idPostingan, isiPostingan, idUser, waktuPostingan) "
-//                        + "VALUES ('" + idposting + "', '" + postingan + "', '" + id
-//                        + "', '" + date + "')";
-//                java.sql.Statement statement = conn.getConnection().createStatement();
-//                statement.executeUpdate(query);
-//            } catch (SQLException ex) {
-//                System.out.println("Gagal 1");
-//            }
-//        } else {
-//            try {
-//                id = "345345";
-//                System.out.println(id);
-//                String idposting = date.getTime() + "" + id;
-//                String query = "INSERT INTO POSTINGAN (idPostingan, isiPostingan, idAdmin, waktuPostingan) "
-//                        + "VALUES ('" + idposting + "', '" + postingan + "', '" + id
-//                        + "', '" + date + "')";
-//                java.sql.Statement statement = conn.getConnection().createStatement();
-//                statement.executeUpdate(query);
-//            } catch (SQLException ex) {
-//                System.out.println("Gagal 2");
-//            }
-//        }
     }
 
 }
