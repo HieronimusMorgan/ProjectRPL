@@ -6,21 +6,19 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import object.pengguna;
 
 /**
  *
  * @author Asus
  */
-@WebServlet(urlPatterns = {"/KelolaUser"})
-public class KelolaUser extends HttpServlet {
+@WebServlet(urlPatterns = {"/AkunUser"})
+public class AkunUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class KelolaUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet KelolaUser</title>");
+            out.println("<title>Servlet Akun</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet KelolaUser at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Akun at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,11 +59,9 @@ public class KelolaUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-//        HttpSession session = request.getSession(false);
-//        String coba = (String) session.getAttribute("username");
-//        session.getAttribute("password");
-        ArrayList<pengguna> data = new ArrayList<pengguna>();
-
+        HttpSession session = request.getSession(false);
+        String coba = (String) session.getAttribute("username");
+        session.getAttribute("password");
         out.print("<html>\n"
                 + "<head>\n"
                 + "<title>FaceIT</title>\n"
@@ -74,9 +70,8 @@ public class KelolaUser extends HttpServlet {
                 + "<body>\n"
                 + "<div class=\"sidebar\">\n"
                 + "<h1>FaceIT </h1>                         "
-                + "<a href=\"homeAdmin\">Home</a>\n"
-                + "<a href=\"Akun\">Akun</a>\n"
-                + "<a class=\"active\" href=\"KelolaUser\">Kelola User</a>\n"
+                + "<a href=\"home\">Home</a>\n"
+                + "<a class=\"active\"href=\"AkunUser\">Akun</a>\n"
                 + "<a href=\"Logout\">Logout</a>\n"
                 + "</div>\n"
                 + "</form>\n"
@@ -93,49 +88,20 @@ public class KelolaUser extends HttpServlet {
                 + "</head>\n"
                 + "<body>\n"
                 + "<div class=\"login-box\">\n"
-                + "<h1>Kelola User</h1>\n"
+                + "<h1>Informasi Akun</h1>\n"
                 + "<form>\n"
-                + "<p>Nama Lengkap</p>\n"
-                + "<input type=\"text\" name=\"nama\" placeholder=\"Masukkan Nama Lengkap\">\n"
+                + "<p>Nama User</p>\n"
+                + "<input type=\"text\" name=\"nama\" value=\"Yudistira Prama\" disabled>\n"
                 + "<p>NIM</p>\n"
-                + "<input type=\"text\" name=\"NIM\" placeholder=\"Masukkan NIM\">\n"
-                + "<p>*NIM akan menajdi Username dan Password User</p>\n"
+                + "<input type=\"text\" name=\"NIM\" value=\"175314083\" disabled>\n"
+                + "<p>*NIM adalah Username dan Password User</p>\n"
                 + "<br>"
-                + "<input type=\"submit\" name=\"Tambah\" value=\"Tambah\" onclick=\"form.action='TambahUser';\">\n"
-                + "<input type=\"submit\" name=\"Hapus\" value=\"Hapus\" onclick=\"form.action='HapusUser';\">\n"
+                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='homeAdmin';\">\n"
                 + "</form>\n"
                 + "</div>\n"
-                + "</body>");
-        
-        try {
-            if (data.size() != 0) {
-                out.println("<center>");
-                out.println("<h1>Data User</h1>");
-                out.println("<table border=3>");
-                out.println("<tr>");
-                out.println("<td>ID User</td>");
-                out.println("<td>Nama</td>");
-                out.println("<td>Username</td>");
-                out.println("<td>Password Date</td>");
-                out.println("</tr>");
-
-                for (int i = 0; i < data.size(); i++) {
-                    out.println("<tr>");
-                    out.println("<td>" + data.get(i).getIdUser() + "</td>");
-                    out.println("<td>" + data.get(i).getName() + "</td>");
-                    out.println("<td>" + data.get(i).getUsername() + "</td>");
-                    out.println("<td>" + data.get(i).getPassword() + "</td>");
-                    out.println("</tr>");
-                }
-
-                out.println("</table>");
-                out.println("</center>");
-            } 
-        } finally {
-            out.close();
-        }
-        
-        
+                + "</body>\n"
+                + "\n"
+                + "</html>");
         out.print("</div>\n");
         out.print("</div>\n"
                 + "</div>\n"

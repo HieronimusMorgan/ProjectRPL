@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -58,9 +59,9 @@ public class Akun extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-//        HttpSession session = request.getSession(false);
-//        String coba = (String) session.getAttribute("username");
-//        session.getAttribute("password");
+        HttpSession session = request.getSession(false);
+        String coba = (String) session.getAttribute("username");
+        session.getAttribute("password");
         out.print("<html>\n"
                 + "<head>\n"
                 + "<title>FaceIT</title>\n"

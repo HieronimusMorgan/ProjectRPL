@@ -66,7 +66,7 @@ public class HapusUser extends HttpServlet {
         p.setName(request.getParameter("nama"));
         p.setUsername(request.getParameter("NIM"));
         p.setPassword(request.getParameter("NIM"));
-        String id = p.getUsername().substring(0, 1)+""+p.getUsername().substring(6, 8);
+        String id = p.getUsername().substring(0, 2)+""+p.getUsername().substring(6, 9);
         p.setIdUser(id);
         
         op.hapusUser(p);

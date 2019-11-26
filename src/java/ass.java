@@ -15,9 +15,10 @@ import java.sql.Date;
 public class ass {
 
     public static void main(String[] args) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String s = String.valueOf(timestamp);
-        System.out.println(s);
+        String nim = "175314080";
+        String id = nim.substring(0,2)+""+nim.substring(6,9);
+        
+        System.out.println(id);
         
     }
 

@@ -76,7 +76,7 @@ public class home extends HttpServlet {
                 + "<div class=\"sidebar\">\n"
                 + "<h1>FaceIT </h1>"
                 + "<a class=\"active\" href=\"home\">Home</a>\n"
-                + "<a href=\"Akun\">Akun</a>\n"
+                + "<a href=\"AkunUser\">Akun</a>\n"
                 + "<a href=\"Logout\">Logout</a>\n"
                 + "</div>\n"
                 + "<div class=\"carda\">\n"
@@ -137,7 +137,7 @@ public class home extends HttpServlet {
             session.setAttribute("username", pengguna.getUsername());
             session.setAttribute("password", pengguna.getPassword());
             session.setAttribute("iduser", pengguna.getIdUser());
-            response.sendRedirect("home");
+            response.sendRedirect("homeAdmin");
         } else {
             request.setAttribute("errorMessage", "Invalid user or password");
             response.sendRedirect("index.html");
