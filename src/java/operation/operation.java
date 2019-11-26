@@ -186,7 +186,7 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void tambahUser(pengguna p) {
         try {
             conn = new DatabaseConnection();
@@ -203,7 +203,7 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public ArrayList<pengguna> tampilPenggunaWP() {
         //TODO write your implementation code here:
         conn = new DatabaseConnection();
@@ -228,4 +228,33 @@ public class operation {
         return data;
     }
 
+    public ArrayList<komentar> tampilKomentar() {
+        conn = new DatabaseConnection();
+        ArrayList<komentar> data = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM komentar ORDER BY waktuKomentar DESC";
+            try (java.sql.Statement statement = conn.getConnection().createStatement()) {
+                java.sql.ResultSet result = statement.executeQuery(query);
+
+                while (result.next()) {
+                    komentar k = new komentar();
+                    k.setIdKomentar(result.getString("idKomentar"));
+                    k.setIsiKomentar(result.getString("isiKomentar"));
+                    k.setIdPostingan(result.getString("idPostingan"));
+                    k.setIsiPostingan(result.getString("isiPostingan"));
+                    k.setIdAdmin(result.getString("idAdmin"));
+                    k.setIdUser(result.getString("idUser"));
+                    java.sql.Timestamp s = result.getTimestamp("waktuKomentar");
+                    k.setWaktuKomentar(s);
+                    k.setNamaPengirim(caripengirim(k.getIdUser(), k.getIdAdmin()));
+                    data.add(k);
+                }
+                statement.close();
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Gagal");
+        }
+        return data;
+    }
 }
