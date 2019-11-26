@@ -22,7 +22,9 @@ import operation.operation;
  */
 @WebServlet(urlPatterns = {"/KelolaUser"})
 public class KelolaUser extends HttpServlet {
+
     operation op = new operation();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -106,31 +108,36 @@ public class KelolaUser extends HttpServlet {
                 + "<input type=\"submit\" name=\"Hapus\" value=\"Hapus\" onclick=\"form.action='HapusUser';\">\n"
                 + "</form>\n"
                 + "</div>\n"
-                + "</body>");
-        
-            if (data.isEmpty()) {
-                out.println("<center>");
-                out.println("<h1>Data User</h1>");
-                out.println("<table border=3>");
-                out.println("<tr>");
-                out.println("<td>ID User</td>");
-                out.println("<td>Nama</td>");
-                out.println("<td>Username</td>");
-                out.println("<td>Password Date</td>");
-                out.println("</tr>");
+                + "</body>"
+                + "\n"
+                + "</html>"
+        );
 
-                for (int i = 0; i < data.size(); i++) {
-                    out.println("<tr>");
-                    out.println("<td>" + data.get(i).getIdUser() + "</td>");
-                    out.println("<td>" + data.get(i).getName() + "</td>");
-                    out.println("<td>" + data.get(i).getUsername() + "</td>");
-                    out.println("<td>" + data.get(i).getPassword() + "</td>");
-                    out.println("</tr>");
-                }
+        if (!data.isEmpty()) {
+            out.print("<div class='table-box'");
+            out.print("<center>");
+            out.print("<h1>Data User</h1>");
+            out.print("<table border=3>");
+            out.print("<tr>");
+            out.print("<td style='color:White;'>ID User</td>");
+            out.print("<td style='color:White;'>Nama</td>");
+            out.print("<td style='color:White;'>Username</td>");
+            out.print("<td style='color:White;'>Password</td>");
+            out.print("</tr>");
 
-                out.println("</table>");
-                out.println("</center>");
-            } 
+            for (int i = 0; i < data.size(); i++) {
+                out.print("<tr>");
+                out.print("<td style='color:White;'>" + data.get(i).getIdUser() + "</td>");
+                out.print("<td style='color:White;'>" + data.get(i).getName() + "</td>");
+                out.print("<td style='color:White;'>" + data.get(i).getUsername() + "</td>");
+                out.print("<td style='color:White;'>" + data.get(i).getPassword() + "</td>");
+                out.print("</tr>");
+            }
+
+            out.print("</table>");
+            out.print("</center>");
+            out.print("</div>");
+        }
         out.print("</div>\n");
         out.print("</div>\n"
                 + "</div>\n"

@@ -178,7 +178,7 @@ public class operation {
     public void hapusUser(pengguna p) {
         try {
             conn = new DatabaseConnection();
-            String sql = "DELETE FROM USER WHERE IDUSER = '" + p.getIdUser() + "'";
+            String sql = "DELETE FROM USER WHERE USERNAMEUSER = '" + p.getUsername() + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
             stat.close();

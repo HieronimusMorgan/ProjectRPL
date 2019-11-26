@@ -7,6 +7,20 @@ body {
     font-family: sans-serif;
 }
 
+.table-box {
+    width: 600px;
+    height: 300px;
+    background: rgba(1, 1, 1, 1);
+    color: #fff;
+    top: 105%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 20px 60px;
+    border-radius: 40px;
+}
+
 .login-box {
     width: 320px;
     height: 500px;
