@@ -20,7 +20,7 @@ import operation.*;
  *
  * @author asus
  */
-@WebServlet(urlPatterns = {"/home"})
+@WebServlet(urlPatterns = {"/homeAdmin"})
 public class homeAdmin extends HttpServlet {
 
     operation a = new operation();
