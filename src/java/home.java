@@ -87,11 +87,11 @@ public class home extends HttpServlet {
                 + "</textarea></h5>\n"
                 + "                <div class=\"tambah\"><input type=\"submit\" name=\"tambah\" value=\"Tambah\"></div>\n"
                 + "\n"
-                + "        </form>\n"
-                + "    </div>"
-                + "    <div class=\"content\">\n"
-                + "        <div class=\"row\">\n"
-                + "            <div class=\"leftcolumn\">\n"
+                + "</form>\n"
+                + "</div>"
+                + "<div class=\"content\">\n"
+                + "<div class=\"row\">\n"
+                + "<div class=\"leftcolumn\">\n"
         );
         java.util.List<postingan> posting;
 
@@ -105,8 +105,8 @@ public class home extends HttpServlet {
             out.print(" <p>" + posting.get(i).getIsi() + "</p>\n");
             out.print("                </div>\n");
         }
-        out.print("            </div>\n"
-                + "        </div>\n"
+        out.print("</div>\n"
+                + "</div>\n"
                 + "</body>\n"
                 + "</html>");
     }

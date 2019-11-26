@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import object.pengguna;
+import operation.operation;
 
 /**
  *
@@ -18,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/TambahUser"})
 public class TambahUser extends HttpServlet {
+    
+    operation op = new operation();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,6 +61,15 @@ public class TambahUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        pengguna p = new pengguna();
+        p.setName(request.getParameter("nama"));
+        p.setUsername(request.getParameter("NIM"));
+        p.setPassword(request.getParameter("NIM"));
+        String id = p.getUsername().substring(0, 1)+""+p.getUsername().substring(6, 8);
+        p.setIdUser(id);
+        
+        op.tambahUser(p);
+        
         response.sendRedirect("homeAdmin");
     }
 

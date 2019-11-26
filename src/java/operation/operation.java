@@ -174,4 +174,33 @@ public class operation {
         }
     }
 
+    public void hapusUser(pengguna p) {
+        try {
+            conn = new DatabaseConnection();
+            String sql = "DELETE FROM PENGGUNA WHERE IDUSER = '" + p.getIdUser() + "'";
+            java.sql.Statement stat = conn.getConnection().createStatement();
+            stat.executeUpdate(sql);
+            stat.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void tambahUser(pengguna p) {
+        try {
+            conn = new DatabaseConnection();
+            String query = "INSERT INTO USER VALUES ('"
+                    + p.getIdUser() + "','" + p.getUsername()
+                    + "','" + p.getName()
+                    + "','" + p.getPassword() + "')";
+
+            java.sql.Statement statement = conn.getConnection().createStatement();
+
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
