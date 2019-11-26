@@ -215,9 +215,10 @@ public class operation {
 
             while (result.next()) {
                 pengguna p = new pengguna();
-                p.setUsername(result.getString("NIM"));
-                p.setPassword(result.getString("NIM"));
-                p.setName(result.getString("nama"));
+                p.setUsername(result.getString("usernameUser"));
+                p.setPassword(result.getString("passwordUser"));
+                p.setName(result.getString("nameUser"));
+                p.setIdUser(result.getString("idUser"));
                 data.add(p);
             }
             statement.close();

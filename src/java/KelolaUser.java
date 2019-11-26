@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import object.pengguna;
+import operation.operation;
 
 /**
  *
@@ -21,7 +22,7 @@ import object.pengguna;
  */
 @WebServlet(urlPatterns = {"/KelolaUser"})
 public class KelolaUser extends HttpServlet {
-
+    operation op = new operation();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -64,12 +65,12 @@ public class KelolaUser extends HttpServlet {
 //        HttpSession session = request.getSession(false);
 //        String coba = (String) session.getAttribute("username");
 //        session.getAttribute("password");
-        ArrayList<pengguna> data = new ArrayList<pengguna>();
+        ArrayList<pengguna> data = op.tampilPenggunaWP();
 
         out.print("<html>\n"
                 + "<head>\n"
                 + "<title>FaceIT</title>\n"
-                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n"
+                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"style_kelola.css\">\n"
                 + "</head>\n"
                 + "<body>\n"
                 + "<div class=\"sidebar\">\n"
@@ -107,8 +108,7 @@ public class KelolaUser extends HttpServlet {
                 + "</div>\n"
                 + "</body>");
         
-        try {
-            if (data.size() != 0) {
+            if (data.isEmpty()) {
                 out.println("<center>");
                 out.println("<h1>Data User</h1>");
                 out.println("<table border=3>");
@@ -131,11 +131,6 @@ public class KelolaUser extends HttpServlet {
                 out.println("</table>");
                 out.println("</center>");
             } 
-        } finally {
-            out.close();
-        }
-        
-        
         out.print("</div>\n");
         out.print("</div>\n"
                 + "</div>\n"

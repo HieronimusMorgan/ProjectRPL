@@ -77,7 +77,7 @@ public class homeAdmin extends HttpServlet {
                 + "<h1>FaceIT </h1>"
                 + "<a  class=\"active\" href=\"homeAdmin\">Home</a>\n"
                 + "<a href=\"Akun\">Akun</a>\n"
-                + "<a href=\"#kelolaUser\">Kelola User</a>\n"
+                + "<a href=\"KelolaUser\">Kelola User</a>\n"
                 + "<a href=\"Logout\">Logout</a>\n"
                 + "</div>\n"
                 + "<div class=\"carda\">\n"
