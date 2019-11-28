@@ -23,6 +23,7 @@ import operation.operation;
 public class komentar extends HttpServlet {
 
     operation a = new operation();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -79,34 +80,19 @@ public class komentar extends HttpServlet {
                 + "            <a href=\"#contact\">Logout</a>\n"
                 + "        </div>\n"
                 + "        <div class=\"carda\">\n"
+                + "            <form>\n"
                 + "                <h2>Postingan</h2>\n"
-                + "                <h5><textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" placeholder=\"Tulis disini ...\">\n"
-                + "                </textarea></h5>\n"
-                + "            \n"
+                + "                <h5>\n"
+                + "                    <textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly></textarea>\n"
+                + "                </h5>\n"
+                + "                <textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
+                + "                <br>\n"
+                + "                <div class=\"kirim-komentar\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
+                + "            </form>\n"
+                + "\n"
                 + "        </div>\n"
-                + "        <div class=\"content\">\n"
-                + "        <div class=\"row\">\n"
-                + "        <div class=\"leftcolumn\">\n"
+                + "\n"
                 + "    </body>\n"
-                + "</html>"
-        );
-        java.util.List<postingan> posting;
-
-        posting = a.tampilPostingan();
-        for (int i = 0; i < posting.size(); i++) {
-
-            out.print("<div class=\"card\">\n");
-            out.print("<h1>" + posting.get(i).getNamaPengirim() + "</h1>\n");
-            out.print("<h5>" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
-                    + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
-                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
-            out.print(" <p>" + posting.get(i).getIsi() + "</p>\n");
-            out.print("                </div>\n");
-        }
-        
-        out.print("            </div>\n"
-                + "        </div>\n"
-                + "</body>\n"
                 + "</html>");
     }
 

@@ -231,4 +231,24 @@ textarea{
     margin-left: 25%;
 }
 
+.kirim-komentar{
+    position: absolute;
+    left: 2.5%;
+    padding: 0;
+}
+
+.komentar-box {
+    width: 900px;
+    height: 60px;
+    background: rgba(1, 1, 1, 1);
+    color: #fff;
+    bottom: -30%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding-top: 40px;
+    border-radius: 20px;
+    z-index: 0;
+}
 

@@ -69,6 +69,26 @@ public class operation {
         return false;
     }
 
+    public pengguna cariUser(String username, String password) {
+        try {
+            String query = "SELECT * FROM user WHERE usernameUser LIKE '" + username + "'";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            if (result.first()) {
+                pengguna p = new pengguna();
+                p.setIdUser(result.getString("idUser"));
+                p.setUsername(result.getString("usernameUser"));
+                p.setPassword(result.getString("passwordUser"));
+                p.setName(result.getString("nameUser"));
+                return p;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public String cariPengirim(String idUser, String idAdmin) {
         try {
             String query = "SELECT a.nameUser FROM user a , postingan b WHERE b.idUser LIKE '" + idUser + "' AND a.idUser LIKE '" + idUser + "'";
@@ -89,6 +109,30 @@ public class operation {
         } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return "";
+    }
+
+    private String caripengirim(String user, String admin) {
+        conn = new DatabaseConnection();
+        String query = "SELECT nameUser FROM `user` WHERE '" + user + "' = usernameUser";
+        String query1 = "SELECT nameAdmin FROM `admin` WHERE '" + admin + "' = usernameAdmin";
+        java.sql.Statement statement;
+        try {
+            statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            if (result.isFirst()) {
+                return result.getString("nameUser");
+            }
+            java.sql.ResultSet result1 = statement.executeQuery(query1);
+            result1.next();
+            if (result1.isFirst()) {
+                return result1.getString("nameAdmin");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return "";
     }
 
@@ -117,30 +161,6 @@ public class operation {
             System.out.println("Gagal");
         }
         return data;
-    }
-
-    private String caripengirim(String user, String admin) {
-        conn = new DatabaseConnection();
-        String query = "SELECT nameUser FROM `user` WHERE '" + user + "' = usernameUser";
-        String query1 = "SELECT nameAdmin FROM `admin` WHERE '" + admin + "' = usernameAdmin";
-        java.sql.Statement statement;
-        try {
-            statement = conn.getConnection().createStatement();
-            java.sql.ResultSet result = statement.executeQuery(query);
-            result.next();
-            if (result.isFirst()) {
-                return result.getString("nameUser");
-            }
-            java.sql.ResultSet result1 = statement.executeQuery(query1);
-            result1.next();
-            if (result1.isFirst()) {
-                return result1.getString("nameAdmin");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return "";
     }
 
     public void tambahPostingan(String username, String password, String iduser, String postingan) {
@@ -254,24 +274,24 @@ public class operation {
         return data;
     }
 
-    public pengguna cariUser(String username, String password) {
+    public void tambahKomentar(String username, String password, String iduser, String komentar, String postingan) {
+        conn = new DatabaseConnection();
+        String id;
+        Timestamp date = new Timestamp(System.currentTimeMillis());
+        System.out.println(caripengirim(username, username));
         try {
-            String query = "SELECT * FROM user WHERE usernameUser LIKE '" + username + "'";
+            id = "17080";
+            String idKomentar = date.getTime() + "" + id;
+
+            String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idUser) "
+                    + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
+                    + "', '" + iduser + "')";
             java.sql.Statement statement = conn.getConnection().createStatement();
-            java.sql.ResultSet result = statement.executeQuery(query);
-            result.next();
-            if (result.first()) {
-                pengguna p = new pengguna();
-                p.setIdUser(result.getString("idUser"));
-                p.setUsername(result.getString("usernameUser"));
-                p.setPassword(result.getString("passwordUser"));
-                p.setName(result.getString("nameUser"));
-                return p;
-            }
+            statement.executeUpdate(query);
+            statement.close();
         } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
     }
 
     public void hapusKomentar(komentar k) {
