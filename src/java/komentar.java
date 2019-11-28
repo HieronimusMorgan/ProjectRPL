@@ -19,8 +19,8 @@ import operation.operation;
  *
  * @author acer
  */
-@WebServlet(urlPatterns = {"/komen"})
-public class komen extends HttpServlet {
+@WebServlet(urlPatterns = {"/komentar"})
+public class komentar extends HttpServlet {
 
     operation a = new operation();
     /**
