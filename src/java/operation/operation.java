@@ -71,21 +71,19 @@ public class operation {
 
     public String cariPengirim(String idUser, String idAdmin) {
         try {
-            String query = "SELECT a.nameUser FROM user a , postingan b WHERE b.idUser OR a.idUser LIKE '" + idUser + "'";
+            String query = "SELECT a.nameUser FROM user a , postingan b WHERE b.idUser LIKE '" + idUser + "' AND a.idUser LIKE '" + idUser + "'";
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
             if (result.first()) {
                 return result.getString("nameUser");
-            } else {
-                String query1 = "SELECT a.nameAdmin FROM admin a , postingan b WHERE b.idAdmin OR a.idAdmin LIKE '" + idAdmin + "'";
-                java.sql.Statement statement1 = conn.getConnection().createStatement();
-                java.sql.ResultSet result1 = statement1.executeQuery(query1);
-                result1.next();
-                if (result1.first()) {
-                    System.out.println(result.getString("nameAdmin") + " user");
-                    return result.getString("nameAdmin");
-                }
+            }
+            String query1 = "SELECT a.nameAdmin FROM admin a , postingan b WHERE b.idAdmin LIKE '" + idAdmin + "' AND a.idAdmin LIKE '" + idAdmin + "'";
+            java.sql.Statement statement1 = conn.getConnection().createStatement();
+            java.sql.ResultSet result1 = statement1.executeQuery(query1);
+            result1.next();
+            if (result1.first()) {
+                return result1.getString("nameAdmin");
             }
 
         } catch (SQLException ex) {
@@ -114,7 +112,7 @@ public class operation {
                 }
                 statement.close();
             }
-            
+
         } catch (SQLException ex) {
             System.out.println("Gagal");
         }
@@ -274,12 +272,12 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }   
-    
+    }
+
     public void hapusKomentar(komentar k) {
         try {
             conn = new DatabaseConnection();
-            String sql = "DELETE FROM KOMENTAR WHERE idkomentar = '" + k.getIdKomentar()+ "'";
+            String sql = "DELETE FROM KOMENTAR WHERE idkomentar = '" + k.getIdKomentar() + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
             stat.close();
@@ -287,5 +285,5 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
