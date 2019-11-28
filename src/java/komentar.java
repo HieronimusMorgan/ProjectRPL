@@ -62,11 +62,14 @@ public class komentar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
-        String coba = (String) session.getAttribute("username");
-        session.getAttribute("password");
+        String nama = (String) session.getAttribute("username");
+        String pass = (String) session.getAttribute("password");
+        String id = (String) session.getAttribute("iduser");
+        String nameuser = (String) session.getAttribute("nameuser");
+        String pengirim = request.getParameter("pengirim");
+        String isi = request.getParameter("isi");
         out.print("<html>\n"
                 + "    <head>\n"
                 + "        <title>FaceIT</title>\n"
@@ -75,15 +78,15 @@ public class komentar extends HttpServlet {
                 + "    <body>\n"
                 + "        <div class=\"sidebar\">\n"
                 + "            <h1>FaceIT </h1>                         \n"
-                + "            <a class=\"active\" href=\"#home\">Home</a>\n"
-                + "            <a href=\"#news\">Akun</a>\n"
-                + "            <a href=\"#contact\">Logout</a>\n"
+                + "            <a class=\"active\" href=\"home\">Home</a>\n"
+                + "            <a href=\"AkunUser\">Akun</a>\n"
+                + "            <a href=\"Logout\">Logout</a>\n"
                 + "        </div>\n"
                 + "        <div class=\"carda\">\n"
                 + "            <form>\n"
                 + "                <h2>Postingan</h2>\n"
                 + "                <h5>\n"
-                + "                    <textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly></textarea>\n"
+                + "                    <textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>"+isi+"</textarea>\n"
                 + "                </h5>\n"
                 + "                <textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
                 + "                <br>\n"
