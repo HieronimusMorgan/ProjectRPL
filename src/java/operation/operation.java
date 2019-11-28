@@ -76,7 +76,6 @@ public class operation {
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
             if (result.first()) {
-                System.out.println(result.getString("nameUser") + " user");
                 return result.getString("nameUser");
             } else {
                 String query1 = "SELECT a.nameAdmin FROM admin a , postingan b WHERE b.idAdmin OR a.idAdmin LIKE '" + idAdmin + "'";
@@ -103,20 +102,19 @@ public class operation {
             String query = "SELECT * FROM postingan ORDER BY waktuPostingan DESC";
             try (java.sql.Statement statement = conn.getConnection().createStatement()) {
                 java.sql.ResultSet result = statement.executeQuery(query);
-
                 while (result.next()) {
                     postingan p = new postingan();
                     p.setIdPostingan(result.getString("idPostingan"));
                     p.setIsi(result.getString("isiPostingan"));
                     p.setIdUser(result.getString("idUser"));
-                    System.out.println(p.getIdUser());
                     p.setIdAdmin(result.getString("idAdmin"));
                     java.sql.Timestamp s = result.getTimestamp("waktuPostingan");
                     p.setWaktu(s);
                     data.add(p);
                 }
+                statement.close();
             }
-
+            
         } catch (SQLException ex) {
             System.out.println("Gagal");
         }
@@ -207,7 +205,7 @@ public class operation {
     public ArrayList<pengguna> tampilPenggunaWP() {
         //TODO write your implementation code here:
         conn = new DatabaseConnection();
-        ArrayList<pengguna> data = new ArrayList<pengguna>();
+        ArrayList<pengguna> data = new ArrayList<>();
         try {
             String query = "SELECT * FROM USER";
             java.sql.Statement statement = conn.getConnection().createStatement();

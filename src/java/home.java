@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,8 +66,10 @@ public class home extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
-        String coba = (String) session.getAttribute("username");
-        session.getAttribute("password");
+        String nama = (String) session.getAttribute("username");
+        String pass = (String) session.getAttribute("password");
+        String id = (String) session.getAttribute("iduser");
+        String nameuser = (String) session.getAttribute("nameuser");
         out.print("<html>\n"
                 + "<head>\n"
                 + "<title>FaceIT</title>\n"
@@ -93,7 +96,7 @@ public class home extends HttpServlet {
                 + "<div class=\"row\">\n"
                 + "<div class=\"leftcolumn\">\n"
         );
-        java.util.List<postingan> posting;
+       List<postingan> posting;
 
         posting = a.tampilPostingan();
         for (int i = 0; i < posting.size(); i++) {
@@ -138,7 +141,7 @@ public class home extends HttpServlet {
             session.setAttribute("username", pengguna.getUsername());
             session.setAttribute("password", pengguna.getPassword());
             session.setAttribute("iduser", pengguna.getIdUser());
-            session.setAttribute("nameadmin", pengguna.getName());
+            session.setAttribute("nameuser", pengguna.getName());
             response.sendRedirect("homeAdmin");
         } else {
             request.setAttribute("errorMessage", "Invalid user or password");

@@ -65,6 +65,8 @@ public class Logout extends HttpServlet {
             String name = null;
             if (session != null) {
                 name = (String) session.getAttribute("sname");
+                name = (String) session.getAttribute("sname");
+                name = (String) session.getAttribute("sname");
                 session.removeAttribute("sname");
                 session.invalidate();
                 response.sendRedirect("index.html");

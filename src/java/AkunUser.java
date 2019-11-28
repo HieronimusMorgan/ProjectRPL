@@ -60,7 +60,10 @@ public class AkunUser extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
-        String coba = (String) session.getAttribute("username");
+        String nama = (String) session.getAttribute("username");
+        String pass = (String) session.getAttribute("password");
+        String id = (String) session.getAttribute("iduser");
+        String nameuser = (String) session.getAttribute("nameuser");
         session.getAttribute("password");
         out.print("<html>\n"
                 + "<head>\n"
@@ -91,12 +94,12 @@ public class AkunUser extends HttpServlet {
                 + "<h1>Informasi Akun</h1>\n"
                 + "<form>\n"
                 + "<p>Nama User</p>\n"
-                + "<input type=\"text\" name=\"nama\" value=\"Yudistira Prama\" disabled>\n"
+                + "<input type=\"text\" name=\"nama\" value=\"" + nameuser + "\" disabled>\n"
                 + "<p>NIM</p>\n"
-                + "<input type=\"text\" name=\"NIM\" value=\"175314083\" disabled>\n"
+                + "<input type=\"text\" name=\"NIM\" value=\"" + nama + "\" disabled>\n"
                 + "<p>*NIM adalah Username dan Password User</p>\n"
                 + "<br>"
-                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='homeAdmin';\">\n"
+                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='home';\">\n"
                 + "</form>\n"
                 + "</div>\n"
                 + "</body>\n"
