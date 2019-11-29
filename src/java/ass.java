@@ -2,6 +2,7 @@
 
 import java.sql.Timestamp;
 import java.sql.Date;
+import operation.operation;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,10 +16,7 @@ import java.sql.Date;
 public class ass {
 
     public static void main(String[] args) {
-        String nim = "175314080";
-        String id = nim.substring(0,2)+""+nim.substring(6,9);
-        
-        System.out.println(id);
+       operation a = new operation();
         
     }
 

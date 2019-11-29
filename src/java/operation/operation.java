@@ -306,4 +306,17 @@ public class operation {
         }
     }
 
+     public void hapusPostingan(postingan p) {
+        try {
+            conn = new DatabaseConnection();
+            String sql = "DELETE FROM POSTINGAN WHERE idPostingan = '" +p.getIdPostingan()+   "'";
+            java.sql.Statement stat = conn.getConnection().createStatement();
+            stat.executeUpdate(sql);
+            stat.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
+     
 }
