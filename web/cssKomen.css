@@ -226,14 +226,31 @@ textarea{
     margin-top: -20px;
     width: 50%;
 }
+.jarak{
+    padding-top: 30px;
+}
+
+textarea1{
+    margin-left: 30px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    width: 50%;
+}
 
 .tambah{
     margin-left: 25%;
 }
 
+
 .kirim-komentar{
     position: absolute;
-    left: 2.5%;
+    left: 49%;
+    padding: 0;
+}
+
+.hapus{
+    position: absolute;
+    left: 46%;
     padding: 0;
 }
 

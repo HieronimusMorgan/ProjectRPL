@@ -19,8 +19,8 @@ import operation.operation;
  *
  * @author acer
  */
-@WebServlet(urlPatterns = {"/komentar"})
-public class komentar extends HttpServlet {
+@WebServlet(urlPatterns = {"/tampilKomentar"})
+public class tampilKomentar extends HttpServlet {
 
     operation a = new operation();
 
@@ -86,8 +86,11 @@ public class komentar extends HttpServlet {
                 + "            <form>\n"
                 + "                <h2>Postingan</h2>\n"
                 + "                <h5>\n"
-                + "                    <textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>"+isi+"</textarea>\n"
+                + "                    <textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + isi + "</textarea><br>\n"
+                + "<div class=\"hapus\"><input type=\"submit\" name=\"edit\" value=\"Edit\">\n"
+                + "<input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
                 + "                </h5>\n"
+                + "        <div class=\"jarak\">\n"
                 + "                <textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
                 + "                <br>\n"
                 + "                <div class=\"kirim-komentar\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"

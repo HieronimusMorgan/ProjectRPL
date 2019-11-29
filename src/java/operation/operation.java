@@ -294,6 +294,23 @@ public class operation {
         }
     }
 
+    public void editPostingan(postingan p, String isi) {
+        try {
+            conn = new DatabaseConnection();
+            pengguna a = new pengguna();
+            a.setIdUser(p.getIdUser());
+            
+            String sql = "UPDATE `postingan` SET `idPostingan`= '" + p.getIdPostingan() +
+                    "', `isiPostingan`= '" + isi + 
+                    "' WHERE idPostingan = " + p.getIdPostingan();
+            java.sql.Statement stat = conn.getConnection().createStatement();
+            stat.executeUpdate(sql);
+            stat.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void hapusKomentar(komentar k) {
         try {
             conn = new DatabaseConnection();
@@ -306,10 +323,10 @@ public class operation {
         }
     }
 
-     public void hapusPostingan(postingan p) {
+    public void hapusPostingan(postingan p) {
         try {
             conn = new DatabaseConnection();
-            String sql = "DELETE FROM POSTINGAN WHERE idPostingan = '" +p.getIdPostingan()+   "'";
+            String sql = "DELETE FROM POSTINGAN WHERE idPostingan = '" + p.getIdPostingan() + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
             stat.close();
@@ -317,6 +334,5 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
-     
+
 }

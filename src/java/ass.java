@@ -1,7 +1,8 @@
 
-
 import java.sql.Timestamp;
 import java.sql.Date;
+import object.komentar;
+import object.postingan;
 import operation.operation;
 
 /*
@@ -14,11 +15,15 @@ import operation.operation;
  * @author asus
  */
 public class ass {
-
+    
     public static void main(String[] args) {
-       operation a = new operation();
-        
+        operation a = new operation();
+        komentar k = new komentar();
+        postingan p = new postingan();
+        p.setIdPostingan("157475111165515562");
+        p.setIsi("hjgj");
+        p.setIdAdmin("15562");
+        a.editPostingan(p, "halo");
     }
-
     
 }
