@@ -5,14 +5,16 @@ body {
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .table-box {
-    width: 600px;
-    height: 300px;
+    width: min-content;
+    height: min-content;
     background: rgba(1, 1, 1, 1);
     color: #fff;
-    top: 105%;
+    top: 135%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);

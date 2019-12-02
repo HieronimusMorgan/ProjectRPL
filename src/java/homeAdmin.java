@@ -98,16 +98,21 @@ public class homeAdmin extends HttpServlet {
 
         posting = a.tampilPostingan();
         for (int i = 0; i < posting.size(); i++) {
+
             out.print("<div class=\"card\">\n");
-            out.print(" <h1>" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h1>\n");
+            out.print("<form>");
+            out.print(" <h1 id\"pengirim\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h1>\n");
             out.print("<h5>" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
                     + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
                     + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
-            out.print(" <p>" + posting.get(i).getIsi() + "</p>\n");
-            out.print("                </div>\n");
+            out.print(" <p id=\"isi\">" + posting.get(i).getIsi() + "</p>\n");
+            out.print("<a href=tampilKomentar?idPostingan='" + posting.get(i).getIdPostingan() +"'>Komentar</a>\n");
+            out.print("</form>\n");
+            out.print("</div>\n");
+
         }
-        out.print("            </div>\n"
-                + "        </div>\n"
+        out.print("</div>\n"
+                + "</div>\n"
                 + "</body>\n"
                 + "</html>");
     }

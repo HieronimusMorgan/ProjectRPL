@@ -37,7 +37,7 @@ public class Logout extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Logout</title>");            
+            out.println("<title>Servlet Logout</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Logout at " + request.getContextPath() + "</h1>");
@@ -64,10 +64,10 @@ public class Logout extends HttpServlet {
             HttpSession session = request.getSession();
             String name = null;
             if (session != null) {
-                name = (String) session.getAttribute("sname");
-                name = (String) session.getAttribute("sname");
-                name = (String) session.getAttribute("sname");
-                session.removeAttribute("sname");
+                session.removeAttribute("username");
+                session.removeAttribute("password");
+                session.removeAttribute("iduser");
+                session.removeAttribute("nameuser");
                 session.invalidate();
                 response.sendRedirect("index.html");
             }

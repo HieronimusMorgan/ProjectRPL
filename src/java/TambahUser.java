@@ -70,7 +70,7 @@ public class TambahUser extends HttpServlet {
         
         op.tambahUser(p);
         
-        response.sendRedirect("homeAdmin");
+        response.sendRedirect("KelolaUser");
     }
 
     /**

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import object.pengguna;
 import operation.operation;
 
 /**
@@ -66,9 +67,17 @@ public class tambah extends HttpServlet {
         String password = (String) session.getAttribute("password");
         String iduser = (String) session.getAttribute("iduser");
         String posting = request.getParameter("posting");
-        System.out.println(posting);
-        a.tambahPostingan(username, password, iduser, posting);
-        response.sendRedirect("home");
+        pengguna pengguna = a.operation(username, password);
+        if (a.cekUser(pengguna)) {
+            System.out.println(posting);
+            a.tambahPostingan(username, password, iduser, posting);
+            response.sendRedirect("home");
+        } else {
+            System.out.println(posting);
+            a.tambahPostingan(username, password, iduser, posting);
+            response.sendRedirect("homeAdmin");
+        }
+
     }
 
     /**

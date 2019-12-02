@@ -5,6 +5,8 @@ body {
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .sidebar {
     margin: 0;
