@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import object.postingan;
+import object.pengguna;
 import operation.operation;
 
 /**
@@ -64,44 +64,80 @@ public class tampilKomentar extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
+
         String nama = (String) session.getAttribute("username");
         String pass = (String) session.getAttribute("password");
         String id = (String) session.getAttribute("iduser");
         String nameuser = (String) session.getAttribute("nameuser");
         String pengirim = request.getParameter("pengirim");
         String idPostingan = request.getParameter("idPostingan");
-        
-        
-        out.print("<html>\n"
-                + "<head>\n"
-                + "<title>FaceIT</title>\n"
-                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"cssKomen.css\">\n"
-                + "</head>\n"
-                + "<body>\n"
-                + "<div class=\"sidebar\">\n"
-                + "<h1>FaceIT </h1>\n"
-                + "<a class=\"active\" href=\"home\">Home</a>\n"
-                + "<a href=\"AkunUser\">Akun</a>\n"
-                + "<a href=\"Logout\">Logout</a>\n"
-                + "</div>\n"
-                + "<div class=\"carda\">\n"
-                + "<form>\n"
-                + "<h2>Postingan</h2>\n"
-                + "<h5>\n"
-                + "<textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + idPostingan + "</textarea><br>\n"
-                + "<div class=\"hapus\"><input type=\"submit\" name=\"edit\" value=\"Edit\">\n"
-                + "<input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
-                + "</h5>\n"
-                + "<div class=\"jarak\">\n"
-                + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
-                + "<br>\n"
-                + "<input type=\"submit\" name=\"kirim\" value=\"Kirim\" href=tampilKomentar?idPostingan='" + idPostingan +"'></div>\n"
-                + "</form>\n"
-                + "\n"
-                + "</div>\n"
-                + "\n"
-                + "</body>\n"
-                + "</html>");
+        session.setAttribute("idPostingan", idPostingan);
+        pengguna pengguna = a.operation(nama, pass);
+        if (a.cekUser(pengguna)) {
+            out.print("<html>\n"
+                    + "<head>\n"
+                    + "<title>FaceIT</title>\n"
+                    + "<link rel=\"stylesheet\" type=\"text/css\" href=\"cssKomen.css\">\n"
+                    + "</head>\n"
+                    + "<body>\n"
+                    + "<div class=\"sidebar\">\n"
+                    + "<h1>FaceIT </h1>\n"
+                    + "<a class=\"active\" href=\"home\">Home</a>\n"
+                    + "<a href=\"AkunUser\">Akun</a>\n"
+                    + "<a href=\"Logout\">Logout</a>\n"
+                    + "</div>\n"
+                    + "<div class=\"carda\">\n"
+                    + "<form>\n"
+                    + "<h2>Postingan</h2>\n"
+                    + "<h5>\n"
+                    + "<textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + idPostingan + "</textarea><br>\n"
+                    + "<div class=\"hapus\"><input type=\"submit\" name=\"edit\" value=\"Edit\">\n"
+                    + "<input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
+                    + "</h5>\n"
+                    + "<div class=\"jarak\">\n"
+                    + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
+                    + "<br>\n"
+                    + "<input type=\"submit\" name=\"kirim\" value=\"Kirim\" href=tampilKomentar?idPostingan='" + idPostingan + "'></div>\n"
+                    + "</form>\n"
+                    + "\n"
+                    + "</div>\n"
+                    + "\n"
+                    + "</body>\n"
+                    + "</html>");
+        } else if (!a.cekUser(pengguna)) {
+            out.print("<html>\n"
+                    + "<head>\n"
+                    + "<title>FaceIT</title>\n"
+                    + "<link rel=\"stylesheet\" type=\"text/css\" href=\"cssKomen.css\">\n"
+                    + "</head>\n"
+                    + "<body>\n"
+                    + "<div class=\"sidebar\">\n"
+                    + "<h1>FaceIT </h1>\n"
+                    + "<a  class=\"active\" href=\"homeAdmin\">Home</a>\n"
+                    + "<a href=\"Akun\">Akun</a>\n"
+                    + "<a href=\"KelolaUser\">Kelola User</a>\n"
+                    + "<a href=\"Logout\">Logout</a>\n"
+                    + "</div>\n"
+                    + "<div class=\"carda\">\n"
+                    + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
+                    + "<h2>Postingan</h2>\n"
+                    + "<h5>\n"
+                    + "<textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + idPostingan + "</textarea><br>\n"
+                    + "<div class=\"hapus\"><input type=\"submit\" name=\"edit\" value=\"Edit\">\n"
+                    + "<input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
+                    + "</h5>\n"
+                    + "<div class=\"jarak\">\n"
+                    + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
+                    + "<br>\n"
+                    + "<input type=\"submit\" name=\"kirim\" value=\"Kirim\" href=tampilKomentar?idPostingan='" + idPostingan + "'></div>\n"
+                    + "</form>\n"
+                    + "\n"
+                    + "</div>\n"
+                    + "\n"
+                    + "</body>\n"
+                    + "</html>");
+        }
+
     }
 
     /**
