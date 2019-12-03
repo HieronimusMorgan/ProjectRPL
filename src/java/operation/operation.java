@@ -334,5 +334,27 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public postingan cariPostingan (String id){
+        try {
+            String query = "SELECT * FROM POSTINGAN WHERE idPostingan = '" + id + "'";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            postingan a = new postingan();
+            if (result.isFirst()) {
+                a.setIdPostingan(result.getString("idPostingan"));
+                a.setIdAdmin(result.getString("idAdmin"));
+                a.setIdUser(result.getString("idUser"));
+                a.setIsi(result.getString("isiPostingan"));
+                a.setWaktu(result.getTime("waktuPostingan"));
+                return a;
+            }
+            statement.close();
+        } catch (Exception ex) {
+            System.out.println("Postingan Tidak Ditemukan");
+        }
+        return null;
+    }
 
 }

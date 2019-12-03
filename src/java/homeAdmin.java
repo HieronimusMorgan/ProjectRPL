@@ -106,7 +106,7 @@ public class homeAdmin extends HttpServlet {
                     + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
                     + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
             out.print(" <p id=\"isi\">" + posting.get(i).getIsi() + "</p>\n");
-            out.print("<a href=tampilKomentar?idPostingan='" + posting.get(i).getIdPostingan() +"'>Komentar</a>\n");
+            out.print("<a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() +">Komentar</a>\n");
             out.print("</form>\n");
             out.print("</div>\n");
 
