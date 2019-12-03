@@ -11,6 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import object.komentar;
+import object.pengguna;
+import operation.operation;
 
 /**
  *
@@ -18,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/tambahKomentar"})
 public class tambahKomentar extends HttpServlet {
+
+    operation a = new operation();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +42,7 @@ public class tambahKomentar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet tambahKomentar</title>");            
+            out.println("<title>Servlet tambahKomentar</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet tambahKomentar at " + request.getContextPath() + "</h1>");
@@ -57,7 +63,17 @@ public class tambahKomentar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(false);
+
+        String nama = (String) session.getAttribute("username");
+        String pass = (String) session.getAttribute("password");
+        String id = (String) session.getAttribute("iduser");
+        String isi = request.getParameter("komentar");
+        String idPos = (String) session.getAttribute("idPostingan");
+        
+        a.tambahKomentar(nama, pass, id, isi, idPos);
+        response.sendRedirect("tampilKomentar?idPostingan=" + idPos);
     }
 
     /**

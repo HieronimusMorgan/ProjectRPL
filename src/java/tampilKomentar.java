@@ -75,9 +75,9 @@ public class tampilKomentar extends HttpServlet {
 
         pengguna pengguna = a.operation(nama, pass);
         session.setAttribute("idPostingan", idPostingan);
-        String idPos = (String) session.getAttribute("idPostingan");
 
         if (a.cekUser(pengguna)) {
+            String idPos = (String) session.getAttribute("idPostingan");
             postingan pos = a.cariPostingan(idPos);
             out.print("<html>\n"
                     + "<head>\n"
@@ -96,13 +96,12 @@ public class tampilKomentar extends HttpServlet {
                     + "<h2>Postingan</h2>\n"
                     + "<h5>\n"
                     + "<textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + pos.getIsi() + "</textarea><br>\n"
-                    + "<div class=\"hapus\"><input type=\"submit\" name=\"edit\" value=\"Edit\">\n"
-                    + "<input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
+                    + "<div class=\"hapus\"><input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
                     + "</h5>\n"
                     + "<div class=\"jarak\">\n"
                     + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
                     + "<br>\n"
-                    + "<input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
+                    + "<div class=\"hapus\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
                     + "</form>\n"
                     + "\n"
                     + "</div>\n"
@@ -110,6 +109,7 @@ public class tampilKomentar extends HttpServlet {
                     + "</body>\n"
                     + "</html>");
         } else if (!a.cekUser(pengguna)) {
+            String idPos = (String) session.getAttribute("idPostingan");
             postingan pos = a.cariPostingan(idPos);
             out.print("<html>\n"
                     + "<head>\n"
@@ -129,13 +129,12 @@ public class tampilKomentar extends HttpServlet {
                     + "<h2>Postingan</h2>\n"
                     + "<h5>\n"
                     + "<textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + pos.getIsi() + "</textarea><br>\n"
-                    + "<div class=\"hapus\"><input type=\"submit\" name=\"edit\" value=\"Edit\">\n"
-                    + "<input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
+                    + "<div class=\"hapus\"><input type=\"submit\" name=\"hapus\" value=\"Hapus\"><br></div>\n"
                     + "</h5>\n"
                     + "<div class=\"jarak\">\n"
                     + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
                     + "<br>\n"
-                    + "<input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
+                    + "<div class=\"hapus\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
                     + "</form>\n"
                     + "\n"
                     + "</div>\n"

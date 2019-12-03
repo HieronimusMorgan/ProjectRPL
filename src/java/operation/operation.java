@@ -276,14 +276,12 @@ public class operation {
 
     public void tambahKomentar(String username, String password, String iduser, String komentar, String postingan) {
         conn = new DatabaseConnection();
-        String id;
         Timestamp date = new Timestamp(System.currentTimeMillis());
         System.out.println(caripengirim(username, username));
         try {
-            id = "17080";
-            String idKomentar = date.getTime() + "" + id;
+            String idKomentar = date.getTime() + "" + iduser;
 
-            String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idUser) "
+            String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idAdmin) "
                     + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
                     + "', '" + iduser + "')";
             java.sql.Statement statement = conn.getConnection().createStatement();
