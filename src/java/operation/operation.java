@@ -244,7 +244,7 @@ public class operation {
         return data;
     }
 
-    public ArrayList<komentar> tampilKomentar() {
+    public ArrayList<komentar> tampilKomentar(postingan p) {
         conn = new DatabaseConnection();
         ArrayList<komentar> data = new ArrayList<>();
         try {
@@ -257,7 +257,6 @@ public class operation {
                     k.setIdKomentar(result.getString("idKomentar"));
                     k.setIsiKomentar(result.getString("isiKomentar"));
                     k.setIdPostingan(result.getString("idPostingan"));
-                    k.setIsiPostingan(result.getString("isiPostingan"));
                     k.setIdAdmin(result.getString("idAdmin"));
                     k.setIdUser(result.getString("idUser"));
                     java.sql.Timestamp s = result.getTimestamp("waktuKomentar");
@@ -269,7 +268,7 @@ public class operation {
             }
 
         } catch (SQLException ex) {
-            System.out.println("Gagal");
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }
@@ -279,14 +278,24 @@ public class operation {
         Timestamp date = new Timestamp(System.currentTimeMillis());
         System.out.println(caripengirim(username, username));
         try {
+            pengguna p = operation(username, password);
             String idKomentar = date.getTime() + "" + iduser;
+            if (cekUser(p)) {
+                String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idUser) "
+                        + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
+                        + "', '" + iduser + "')";
+                java.sql.Statement statement = conn.getConnection().createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } else if (!cekUser(p)) {
+                String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idAdmin) "
+                        + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
+                        + "', '" + iduser + "')";
+                java.sql.Statement statement = conn.getConnection().createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            }
 
-            String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idAdmin) "
-                    + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
-                    + "', '" + iduser + "')";
-            java.sql.Statement statement = conn.getConnection().createStatement();
-            statement.executeUpdate(query);
-            statement.close();
         } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -297,10 +306,10 @@ public class operation {
             conn = new DatabaseConnection();
             pengguna a = new pengguna();
             a.setIdUser(p.getIdUser());
-            
-            String sql = "UPDATE `postingan` SET `idPostingan`= '" + p.getIdPostingan() +
-                    "', `isiPostingan`= '" + isi + 
-                    "' WHERE idPostingan = " + p.getIdPostingan();
+
+            String sql = "UPDATE `postingan` SET `idPostingan`= '" + p.getIdPostingan()
+                    + "', `isiPostingan`= '" + isi
+                    + "' WHERE idPostingan = " + p.getIdPostingan();
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
             stat.close();
@@ -324,6 +333,7 @@ public class operation {
     public void hapusPostingan(postingan p) {
         try {
             conn = new DatabaseConnection();
+            System.out.println(p.getIdPostingan() + " hapus postingan");
             String sql = "DELETE FROM POSTINGAN WHERE idPostingan = '" + p.getIdPostingan() + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
@@ -332,9 +342,10 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public postingan cariPostingan (String id){
+
+    public postingan cariPostingan(String id) {
         try {
+            System.out.println(id + " cari postingan");
             String query = "SELECT * FROM POSTINGAN WHERE idPostingan = '" + id + "'";
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
@@ -350,7 +361,7 @@ public class operation {
             }
             statement.close();
         } catch (Exception ex) {
-            System.out.println("Postingan Tidak Ditemukan");
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
