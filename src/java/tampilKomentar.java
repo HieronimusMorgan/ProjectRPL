@@ -107,8 +107,6 @@ public class tampilKomentar extends HttpServlet {
                         + "</form>\n"
                         + "</div>\n"
                         + "<div class=\"content\">\n"
-                        + "<div class=\"row\">\n"
-                        + "<div class=\"leftcolumn\">\n"
                 );
                 List<komentar> komen;
                 postingan p = new postingan();
@@ -121,12 +119,11 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h5>");
                     out.print(" <p id=\"isi\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                    out.print("<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + ">Hapus</a>\n");
                     out.print("                </form>\n");
                     out.print("                </div>\n");
                 }
-                out.print("</div>\n"
-                        + "</div>\n" 
-                        +"</body>\n"
+                out.print("</body>\n"
                         + "</html>");
             } else if (!a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
@@ -174,7 +171,7 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h5>");
                     out.print(" <p id=\"isi\">" + komen.get(i).getIsiKomentar() + "</p>\n");
-                    out.print("<input type=\"submit\" name=\"submit\" value=\"Komentar\">\n");
+                    out.print("<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + ">Hapus</a>\n");
                     out.print("                </form>\n");
                     out.print("                </div>\n");
                 }
@@ -235,8 +232,8 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<h5>" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h5>");
-                    out.print(" <p id=\"isi\">" + komen.get(i).getIsiKomentar() + "</p>\n");
-                    out.print("<input type=\"submit\" name=\"submit\" value=\"Komentar\">\n");
+                    out.print("<input type='submit' name='submit' value='Hapus' ?idKomentar=" + komen.get(i).getIdKomentar()+ ">\n");
+                    out.print("<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + ">Hapus</a>\n");
                     out.print("                </form>\n");
                     out.print("                </div>\n");
                 }
@@ -290,7 +287,7 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h5>");
                     out.print(" <p id=\"isi\">" + komen.get(i).getIsiKomentar() + "</p>\n");
-                    out.print("<input type=\"submit\" name=\"submit\" value=\"Komentar\">\n");
+                    out.print("<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + ">Hapus</a>\n");
                     out.print("</form>\n");
                     out.print("</div>\n");
                 }

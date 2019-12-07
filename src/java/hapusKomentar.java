@@ -63,7 +63,14 @@ public class hapusKomentar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession(false);
+        //String id = (String) session.getAttribute("idKomentar");       
+        String id =request.getParameter("idKomentar");
+        System.out.println(id+"asdasdasdasd");
+        komentar pos = a.cariKomentar(id);
+        System.out.println(pos.getIdKomentar()+"pstingan");
+        a.hapusKomentar(pos);
+        response.sendRedirect("tampilKomentar?idPostingan="+(String)session.getAttribute("idPostingan"));
     }
 
     /**
@@ -77,12 +84,7 @@ public class hapusKomentar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        String id = (String) session.getAttribute("idPostingan");  
-        komentar pos = a.cariKomentar(id);
-        System.out.println(pos.getIdPostingan() +"pstingan");
-        a.hapusKomentar(pos);
-        response.sendRedirect("homeAdmin");
+       
     }
 
     /**

@@ -62,7 +62,7 @@ div.content {
     margin-left: 200px;
     margin-top: 200px;
     margin-bottom: -100px;
-    height: 90%;
+    height: 150%;
     overflow: auto;
 }
 
@@ -163,6 +163,7 @@ textarea{
 .jarak{
     padding-top: 30px;
 }
+
 
 textarea1{
     margin-left: 30px;

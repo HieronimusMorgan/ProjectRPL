@@ -373,8 +373,8 @@ public class operation {
     public komentar cariKomentar(String id) {
         komentar kom = new komentar();
         try {
+            conn = new DatabaseConnection();
             String query = "SELECT * FROM KOMENTAR WHERE idKomentar = '" + id + "'";
-
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
