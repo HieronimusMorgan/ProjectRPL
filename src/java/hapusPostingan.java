@@ -63,10 +63,9 @@ public class hapusPostingan extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        String id = (String) session.getAttribute("idPostingan");
-        System.out.println(id);
+        String id = (String) session.getAttribute("idPostingan");  
         postingan pos = a.cariPostingan(id);
-        
+        System.out.println(pos.getIdPostingan() +"pstingan");
         a.hapusPostingan(pos);
         response.sendRedirect("homeAdmin");
     }

@@ -11,6 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import object.komentar;
+import object.postingan;
+import operation.operation;
 
 /**
  *
@@ -18,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/hapusKomentar"})
 public class hapusKomentar extends HttpServlet {
+    
+    operation a = new operation();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,7 +77,12 @@ public class hapusKomentar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession(false);
+        String id = (String) session.getAttribute("idPostingan");  
+        komentar pos = a.cariKomentar(id);
+        System.out.println(pos.getIdPostingan() +"pstingan");
+        a.hapusKomentar(pos);
+        response.sendRedirect("homeAdmin");
     }
 
     /**

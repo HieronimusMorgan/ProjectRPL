@@ -17,7 +17,6 @@ public class komentar {
     private String idKomentar;
     private Date waktuKomentar;
     private String idPostingan;
-    private String isiPostingan;
     private String idUser;
     private String idAdmin;
     private String namaPengirim;
@@ -45,16 +44,6 @@ public class komentar {
     public void setNamaPengirim(String namaPengirim) {
         this.namaPengirim = namaPengirim;
     }
-
-    public String getIsiPostingan() {
-        return isiPostingan;
-    }
-
-    public void setIsiPostingan(String isiPostingan) {
-        this.isiPostingan = isiPostingan;
-    }
-
-  
 
     public String getIdKomentar() {
         return idKomentar;

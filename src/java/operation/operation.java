@@ -350,8 +350,8 @@ public class operation {
     public postingan cariPostingan(String id) {
         postingan post = new postingan();
         try {
+            conn = new DatabaseConnection();
             String query = "SELECT * FROM POSTINGAN WHERE idPostingan = '" + id + "'";
-
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
@@ -368,6 +368,29 @@ public class operation {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return post;
+    }
+    
+    public komentar cariKomentar(String id) {
+        komentar kom = new komentar();
+        try {
+            String query = "SELECT * FROM KOMENTAR WHERE idKomentar = '" + id + "'";
+
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            if (result.isFirst()) {
+                kom.setIdKomentar(result.getString("idKomentar"));
+                kom.setIsiKomentar(result.getString("isiKomentar"));
+                kom.setIdPostingan(result.getString("idPostingan"));
+                kom.setWaktuKomentar(result.getTime("waktuKomentar"));
+                kom.setIdUser(result.getString("idUser"));
+                kom.setIdAdmin(result.getString("idAdmin"));
+                return kom;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kom;
     }
 
 }
