@@ -151,52 +151,6 @@ public class tampilKomentar extends HttpServlet {
                         + "</body>\n"
                         + "\n"
                         + "</html>");
-
-//                out.print("<html>\n"
-//                        + "<head>\n"
-//                        + "<title>FaceIT</title>\n"
-//                        + "<link rel=\"stylesheet\" type=\"text/css\" href=\"cssKomen.css\">\n"
-//                        + "</head>\n"
-//                        + "<body>\n"
-//                        + "<div class=\"sidebar\">\n"
-//                        + "<h1>FaceIT </h1>\n"
-//                        + "<a class=\"active\" href=\"home\">Home</a>\n"
-//                        + "<a href=\"AkunUser\">Akun</a>\n"
-//                        + "<a href=\"Logout\">Logout</a>\n"
-//                        + "</div>\n"
-//                        + "<div class=\"carda\">\n"
-//                        + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
-//                        + "<h2>Postingan</h2>\n"
-//                        + "<h5>\n"
-//                        + "<textarea rows=\"4\" cols=\"50\" name=\"posting\"  readonly>" + pos.getIsi() + "</textarea><br>\n"
-//                        + "<div class=\"hapus\"><input type=\"submit\" name=\"hapus\" value=\"Hapus\" onclick=\"form.action='hapusPostingan'\"><br></div>\n"
-//                        + "</h5>\n"
-//                        + "<div class=\"jarak\">\n"
-//                        + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" form=\"usrform\" placeholder=\"Tulis Komentar\"></textarea>\n"
-//                        + "<br>\n"
-//                        + "<div class=\"hapus\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
-//                        + "\n"
-//                        + "</form>\n"
-//                        + "</div>\n"
-//                        + "<div class=\"content\">\n"
-//                );
-//                List<komentar> komen;
-//                postingan p = new postingan();
-//                p.setIdPostingan(idPostingan);
-//                komen = a.tampilKomentar(p);
-//                for (int i = 0; i < komen.size(); i++) {
-//                    out.print("<div class=\"card\">\n");
-//                    out.print(" <h1 id\"pengirim\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h1>\n");
-//                    out.print("<h5>" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
-//                            + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
-//                            + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h5>");
-//                    out.print(" <p id=\"isi\">" + komen.get(i).getIsiKomentar() + "</p>\n");
-//                    out.print("<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + ">Hapus</a>\n");
-//                    out.print("                </form>\n");
-//                    out.print("                </div>\n");
-//                }
-//                out.print("</body>\n"
-//                        + "</html>");
             } else if (!a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
                 postingan pos = a.cariPostingan(idPos);
@@ -430,7 +384,6 @@ public class tampilKomentar extends HttpServlet {
                         + "</html>");
             }
         }
-
     }
 
     /**
