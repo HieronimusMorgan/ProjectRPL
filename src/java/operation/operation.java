@@ -248,7 +248,7 @@ public class operation {
         conn = new DatabaseConnection();
         ArrayList<komentar> data = new ArrayList<>();
         try {
-            String query = "SELECT * FROM komentar WHERE IDPOSTINGAN LIKE '"+p.getIdPostingan()+"' ORDER BY waktuKomentar DESC";
+            String query = "SELECT * FROM komentar WHERE IDPOSTINGAN LIKE '" + p.getIdPostingan() + "' ORDER BY waktuKomentar ASC";
             try (java.sql.Statement statement = conn.getConnection().createStatement()) {
                 java.sql.ResultSet result = statement.executeQuery(query);
 
@@ -280,21 +280,23 @@ public class operation {
         try {
             pengguna p = operation(username, password);
             String idKomentar = date.getTime() + "" + iduser;
-             System.out.println("Tambah");
+            System.out.println("Tambah");
             if (cekUser(p)) {
                 System.out.println("User dongg");
                 String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idUser) "
                         + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
                         + "', '" + iduser + "')";
                 java.sql.Statement statement = conn.getConnection().createStatement();
+                System.out.println("sukses");
                 statement.executeUpdate(query);
                 statement.close();
             } else if (!cekUser(p)) {
-                 System.out.println("Admin dongg");
+                System.out.println("Admin dongg");
                 String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idAdmin) "
                         + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
                         + "', '" + iduser + "')";
                 java.sql.Statement statement = conn.getConnection().createStatement();
+                System.out.println("sukses");
                 statement.executeUpdate(query);
                 statement.close();
             }
@@ -345,7 +347,7 @@ public class operation {
         }
     }
 
-    public postingan cariPostingan(String id) { 
+    public postingan cariPostingan(String id) {
         postingan post = new postingan();
         try {
             String query = "SELECT * FROM POSTINGAN WHERE idPostingan = '" + id + "'";
