@@ -141,7 +141,7 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
                             + "                        <p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
-                            + "                        <a href=tampilKomentar?idPostingan=" + komen.get(i).getIdPostingan() + " class=\"btn btn-primary\">Komentar</a>\n"
+                            + "<input class=\"btn btn-primary\" type=\"submit\" value=\"Hapus Komentar\"><input class=\"btn btn-primary\" type=\"submit\" value=\"Edit Komentar\">\n"
                             + "                    </div></div>");
                 }
                 out.print(
@@ -261,6 +261,7 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
                             + "                        <p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                            + "<input class=\"btn btn-primary\" type=\"submit\" value=\"Hapus Komentar\"><input class=\"btn btn-primary\" type=\"submit\" value=\"Edit Komentar\">\n"
                             + "                    </div></div>");
                 }
                 out.print(
@@ -343,6 +344,7 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
                             + "                        <p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                            + "<input class=\"btn btn-primary\" type=\"submit\" value=\"Hapus Komentar\"><input class=\"btn btn-primary\" type=\"submit\" value=\"Edit Komentar\">\n"
                             + "                    </div></div>");
                 }
                 out.print(
@@ -416,6 +418,7 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
                             + "                        <p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                            + "<input class=\"btn btn-primary\" type=\"submit\" value=\"Hapus Komentar\"><input class=\"btn btn-primary\" type=\"submit\" value=\"Edit Komentar\">\n"
                             + "                    </div></div>");
                 }
                 out.print(
