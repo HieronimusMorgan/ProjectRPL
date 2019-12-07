@@ -137,53 +137,6 @@ public class home extends HttpServlet {
                 + "</body>\n"
                 + "\n"
                 + "</html>");
-//        out.print("<html>\n"
-//                + "<head>\n"
-//                + "<title>FaceIT</title>\n"
-//                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n"
-//                + "</head>\n"
-//                + "<body>\n"
-//                + "<div class=\"sidebar\">\n"
-//                + "<h1>FaceIT </h1>"
-//                + "<a class=\"active\" href=\"home\">Home</a>\n"
-//                + "<a href=\"AkunUser\">Akun</a>\n"
-//                + "<a href=\"Logout\">Logout</a>\n"
-//                + "</div>\n"
-//                + "<div class=\"carda\">\n"
-//                + "<form method=\"GET\" action=\"tambah\" id=\"usrform\">\n"
-//                + "\n"
-//                + "<h2>Tambah Postingan</h2>\n"
-//                + "<h5><textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" placeholder=\"Tulis disini ...\">\n"
-//                + "</textarea></h5>\n"
-//                + "<div class=\"tambah\"><input type=\"submit\" name=\"tambah\" value=\"Tambah\"></div>\n"
-//                + "\n"
-//                + "</form>\n"
-//                + "</div>"
-//                + "<div class=\"content\">\n"
-//                + "<div class=\"row\">\n"
-//                + "<div class=\"leftcolumn\">\n"
-//        );
-//        java.util.List<postingan> posting;
-//
-//        posting = a.tampilPostingan();
-//        for (int i = 0; i < posting.size(); i++) {
-//
-//            out.print("<div class=\"card\">\n");
-//            out.print("<form>");
-//            out.print(" <h1 id\"pengirim\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h1>\n");
-//            out.print("<h5>" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
-//                    + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
-//                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
-//            out.print(" <p id=\"isi\">" + posting.get(i).getIsi() + "</p>\n");
-//            out.print("<a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() + ">Komentar</a>\n");
-//            out.print("</form>\n");
-//            out.print("</div>\n");
-//
-//        }
-//        out.print("</div>\n"
-//                + "</div>\n"
-//                + "</body>\n"
-//                + "</html>");
         session.removeAttribute("idPostingan");
     }
 

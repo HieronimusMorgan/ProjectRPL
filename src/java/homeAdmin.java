@@ -67,53 +67,72 @@ public class homeAdmin extends HttpServlet {
         HttpSession session = request.getSession(false);
         String coba = (String) session.getAttribute("username");
         session.getAttribute("password");
-        out.print("<html>\n"
+        out.println("<html>\n"
+                + "\n"
                 + "<head>\n"
-                + "<title>FaceIT</title>\n"
-                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n"
+                + "    <meta charset=\"utf-8\">\n"
+                + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n"
+                + "\n"
+                + "    <meta name=\"description\" content=\"\">\n"
+                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+                + "\n"
+                + "    <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">\n"
+                + "    <link rel=\"stylesheet\" href=\"css/bootstrap-theme.min.css\">\n"
+                + "    <link rel=\"stylesheet\" href=\"css/bootstrap-grid.min.css\">\n"
+                + "    <link rel=\"stylesheet\" href=\"css/templatemo-style.css\">\n"
+                + "    <link rel=\"stylesheet\" href=\"css/styleSidebar.css\">\n"
+                + "\n"
+                + "\n"
+                + "    <script src=\"js/bootstrap.js\"></script>\n"
                 + "</head>\n"
+                + "\n"
                 + "<body>\n"
-                + "<div class=\"sidebar\">\n"
-                + "<h1>FaceIT </h1>"
+                + "    <div class=\"sidebar\">\n"
+                + "        <center>\n"
+                + "            <h1>FaceIT</h1>\n"
+                + "        </center>\n"
                 + "<a  class=\"active\" href=\"homeAdmin\">Home</a>\n"
                 + "<a href=\"Akun\">Akun</a>\n"
                 + "<a href=\"KelolaUser\">Kelola User</a>\n"
                 + "<a href=\"Logout\">Logout</a>\n"
-                + "</div>\n"
-                + "<div class=\"carda\">\n"
+                + "    </div>1\n"
+                + "    <div class=\"carda\">\n"
+                + "        <div class=\"card\">\n"
                 + "<form method=\"GET\" action=\"tambah\" id=\"usrform\">\n"
-                + "\n"
-                + "<h2>Tambah Postingan</h2>\n"
-                + "<h5><textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" placeholder=\"Tulis disini ...\">\n"
-                + "</textarea></h5>\n"
-                + "<div class=\"tambah\"><input type=\"submit\" name=\"tambah\" value=\"Tambah\"></div>\n"
-                + "\n"
+                + "            <h5 class=\"card-header\">Tambah Postingan</h5>\n"
+                + "            <div class=\"card-body\">\n"
+                + "                <div class=\"form-group\">\n"
+                + "                    <textarea class=\"form-control rounded-0\" form=\"usrform\"  rows=\"3\" name=\"posting\" placeholder=\"Tulis disini ...\"></textarea>\n"
+                + "                </div>\n"
+                + "                <input class=\"btn btn-primary\" type=\"submit\" value=\"Tambah Postingan\">\n"
+                + "            </div>\n"
                 + "</form>\n"
-                + "</div>"
-                + "<div class=\"content\">\n"
-                + "<div class=\"row\">\n"
-                + "<div class=\"leftcolumn\">\n"
-        );
+                + "        </div>\n"
+                + "    </div>\n"
+                + "    <div class=\"content\">\n"
+                + "        <div class=\"row\">\n"
+                + "            <div class=\"leftcolumn\">");
         java.util.List<postingan> posting;
 
         posting = a.tampilPostingan();
         for (int i = 0; i < posting.size(); i++) {
-
-            out.print("<div class=\"card\">\n");
-            out.print("<form>");
-            out.print(" <h1 id\"pengirim\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h1>\n");
-            out.print("<h5>" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
+            out.print("                <div class=\"cardi\">\n"
+                    + "                    <h5 class=\"card-header\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h5>\n"
+                    + "                    <div class=\"card-body\">\n"
+                    + "                        <h6 class=\"card-title\">" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
                     + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
-                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h5>");
-            out.print(" <p id=\"isi\">" + posting.get(i).getIsi() + "</p>\n");
-            out.print("<a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() + ">Komentar</a>\n");
-            out.print("</form>\n");
-            out.print("</div>\n");
-
+                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h6>\n"
+                    + "                        <p class=\"card-text\">" + posting.get(i).getIsi() + "</p>\n"
+                    + "                        <a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() + " class=\"btn btn-primary\">Komentar</a>\n"
+                    + "                    </div></div>");
         }
-        out.print("</div>\n"
-                + "</div>\n"
+
+        out.print(
+                "            </div>\n"
+                + "        </div>\n"
+                + "    </div>\n"
                 + "</body>\n"
+                + "\n"
                 + "</html>");
         session.removeAttribute("idPostingan");
     }
