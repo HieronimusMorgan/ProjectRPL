@@ -248,7 +248,7 @@ public class operation {
         conn = new DatabaseConnection();
         ArrayList<komentar> data = new ArrayList<>();
         try {
-            String query = "SELECT * FROM komentar ORDER BY waktuKomentar DESC";
+            String query = "SELECT * FROM komentar WHERE IDPOSTINGAN LIKE '"+p.getIdPostingan()+"' ORDER BY waktuKomentar DESC";
             try (java.sql.Statement statement = conn.getConnection().createStatement()) {
                 java.sql.ResultSet result = statement.executeQuery(query);
 
@@ -280,7 +280,9 @@ public class operation {
         try {
             pengguna p = operation(username, password);
             String idKomentar = date.getTime() + "" + iduser;
+             System.out.println("Tambah");
             if (cekUser(p)) {
+                System.out.println("User dongg");
                 String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idUser) "
                         + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
                         + "', '" + iduser + "')";
@@ -288,6 +290,7 @@ public class operation {
                 statement.executeUpdate(query);
                 statement.close();
             } else if (!cekUser(p)) {
+                 System.out.println("Admin dongg");
                 String query = "INSERT INTO KOMENTAR (idKomentar, isiKomentar, idPostingan, waktuKomentar, idAdmin) "
                         + "VALUES ('" + idKomentar + "', '" + komentar + "', '" + postingan + "', '" + date
                         + "', '" + iduser + "')";

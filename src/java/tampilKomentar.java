@@ -108,7 +108,9 @@ public class tampilKomentar extends HttpServlet {
                         + "</div>\n");
                 List<komentar> komen;
                 postingan p = new postingan();
+                p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
+                System.out.println("tampilkomentar "+p.getIdPostingan());
                 for (int i = 0; i < komen.size(); i++) {
                     out.print("<div class=\"card\">\n");
                     out.print("<form method=\"get\" action=\"tampilKomentar\">\n");
@@ -155,6 +157,7 @@ public class tampilKomentar extends HttpServlet {
                         + "</div>\n");
                 List<komentar> komen;
                 postingan p = new postingan();
+                p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
                 for (int i = 0; i < komen.size(); i++) {
                     out.print("<div class=\"card\">\n");
@@ -195,7 +198,7 @@ public class tampilKomentar extends HttpServlet {
                         + "<a href=\"Logout\">Logout</a>\n"
                         + "</div>\n"
                         + "<div class=\"carda\">\n"
-                        + "<form>\n"
+                        + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
                         + "<h2>Postingan</h2>\n"
                         + "<h5>\n"
                         + "<textarea rows=\"4\" cols=\"50\" name=\"posting\" form=\"usrform\" readonly>" + pos.getIsi() + "</textarea><br>\n"
@@ -205,15 +208,19 @@ public class tampilKomentar extends HttpServlet {
                         + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
                         + "<br>\n"
                         + "<div class=\"hapus\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
-                        + "</form>\n"
                         + "\n"
-                        + "</div>\n");
+                        + "</form>\n"
+                        + "</div>\n"
+                        + "<div class=\"content\">\n"
+                        + "<div class=\"row\">\n"
+                        + "<div class=\"leftcolumn\">\n"
+                );
                 List<komentar> komen;
                 postingan p = new postingan();
                 komen = a.tampilKomentar(p);
                 for (int i = 0; i < komen.size(); i++) {
                     out.print("<div class=\"card\">\n");
-                    out.print("<form method=\"get\" action=\"tampilKomentar\">\n");
+                    out.print("<form method=\"get\" action=\"tambahKomentar\">\n");
                     out.print(" <h1 id\"pengirim\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h1>\n");
                     out.print("<h5>" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
@@ -223,7 +230,9 @@ public class tampilKomentar extends HttpServlet {
                     out.print("                </form>\n");
                     out.print("                </div>\n");
                 }
-                out.print("</body>\n"
+                out.print("</div>\n"
+                        + "</div>\n" 
+                        + "</body>\n"
                         + "</html>");
             } else if (!a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
@@ -252,9 +261,13 @@ public class tampilKomentar extends HttpServlet {
                         + "<textarea rows=\"2\" cols=\"50\" name=\"komentar\" placeholder=\"Tulis Komentar\"></textarea>\n"
                         + "<br>\n"
                         + "<div class=\"hapus\"><input type=\"submit\" name=\"kirim\" value=\"Kirim\"></div>\n"
-                        + "</form>\n"
                         + "\n"
-                        + "</div>\n");
+                        + "</form>\n"
+                        + "</div>\n"
+                        + "<div class=\"content\">\n"
+                        + "<div class=\"row\">\n"
+                        + "<div class=\"leftcolumn\">\n"
+                );
                 List<komentar> komen;
                 postingan p = new postingan();
                 komen = a.tampilKomentar(p);
@@ -267,10 +280,12 @@ public class tampilKomentar extends HttpServlet {
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h5>");
                     out.print(" <p id=\"isi\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     out.print("<input type=\"submit\" name=\"submit\" value=\"Komentar\">\n");
-                    out.print("                </form>\n");
-                    out.print("                </div>\n");
+                    out.print("</form>\n");
+                    out.print("</div>\n");
                 }
-                out.print("</body>\n"
+                out.print("</div>\n"
+                        + "</div>\n" 
+                        + "</body>\n"
                         + "</html>");
             }
         }

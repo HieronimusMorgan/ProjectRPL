@@ -115,6 +115,7 @@ public class homeAdmin extends HttpServlet {
                 + "</div>\n"
                 + "</body>\n"
                 + "</html>");
+        session.removeAttribute("idPostingan");
     }
 
     /**
