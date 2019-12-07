@@ -337,33 +337,32 @@ public class operation {
             String sql = "DELETE FROM POSTINGAN WHERE idPostingan = '" + p.getIdPostingan() + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
-            stat.close();
         } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public postingan cariPostingan(String id) {
+    public postingan cariPostingan(String id) { 
+        postingan post = new postingan();
         try {
-            System.out.println(id + " cari postingan");
             String query = "SELECT * FROM POSTINGAN WHERE idPostingan = '" + id + "'";
+
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
-            postingan a = new postingan();
             if (result.isFirst()) {
-                a.setIdPostingan(result.getString("idPostingan"));
-                a.setIdAdmin(result.getString("idAdmin"));
-                a.setIdUser(result.getString("idUser"));
-                a.setIsi(result.getString("isiPostingan"));
-                a.setWaktu(result.getTime("waktuPostingan"));
-                return a;
+                post.setIdPostingan(result.getString("idPostingan"));
+                System.out.println(post.getIdPostingan());
+                post.setIdAdmin(result.getString("idAdmin"));
+                post.setIdUser(result.getString("idUser"));
+                post.setIsi(result.getString("isiPostingan"));
+                post.setWaktu(result.getTime("waktuPostingan"));
+                return post;
             }
-            statement.close();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return post;
     }
 
 }

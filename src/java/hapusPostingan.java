@@ -66,9 +66,8 @@ public class hapusPostingan extends HttpServlet {
         String id = (String) session.getAttribute("idPostingan");
         System.out.println(id);
         postingan pos = a.cariPostingan(id);
-        System.out.println(pos.getNamaPengirim());
+        
         a.hapusPostingan(pos);
-        session.removeAttribute("idPostingan");
         response.sendRedirect("homeAdmin");
     }
 
