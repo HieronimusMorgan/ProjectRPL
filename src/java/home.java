@@ -123,7 +123,7 @@ public class home extends HttpServlet {
             out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                     + "<h5 class=\"card-header text-white\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h5>\n"
                     + "<div class=\"card-body text-white\">\n"
-                    + "<h6 class=\"card-title\">" + posting.get(i).getWaktu().toGMTString()+ "</h6>\n"
+                    + "<h6 class=\"card-title\">" + posting.get(i).getWaktu().toGMTString() + "</h6>\n"
                     + "<p class=\"card-text\">" + posting.get(i).getIsi() + "</p>\n"
                     + "<a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() + " class=\"btn btn-primary\">Komentar</a>\n"
                     + "</div></div>");
@@ -154,24 +154,26 @@ public class home extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         pengguna pengguna = a.operation(username, password);
-        if (a.cekUser(pengguna)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", pengguna.getUsername());
-            session.setAttribute("password", pengguna.getPassword());
-            session.setAttribute("iduser", pengguna.getIdUser());
-            session.setAttribute("nameuser", pengguna.getName());
-            response.sendRedirect("home");
-        } else if (!a.cekUser(pengguna)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", pengguna.getUsername());
-            session.setAttribute("password", pengguna.getPassword());
-            session.setAttribute("iduser", pengguna.getIdUser());
-            session.setAttribute("nameuser", pengguna.getName());
-            response.sendRedirect("homeAdmin");
+        if (pengguna != null) {
+            if (a.cekUser(pengguna)) {
+                HttpSession session = request.getSession();
+                session.setAttribute("username", pengguna.getUsername());
+                session.setAttribute("password", pengguna.getPassword());
+                session.setAttribute("iduser", pengguna.getIdUser());
+                session.setAttribute("nameuser", pengguna.getName());
+                response.sendRedirect("home");
+            } else if (!a.cekUser(pengguna)) {
+                HttpSession session = request.getSession();
+                session.setAttribute("username", pengguna.getUsername());
+                session.setAttribute("password", pengguna.getPassword());
+                session.setAttribute("iduser", pengguna.getIdUser());
+                session.setAttribute("nameuser", pengguna.getName());
+                response.sendRedirect("homeAdmin");
+            }
         } else {
-            request.setAttribute("errorMessage", "Invalid user or password");
             response.sendRedirect("index.html");
         }
+
     }
 
     /**

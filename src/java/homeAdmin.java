@@ -147,26 +147,7 @@ public class homeAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        pengguna pengguna = a.operation(username, password);
-        if (a.cekUser(pengguna)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", pengguna.getUsername());
-            session.setAttribute("password", pengguna.getPassword());
-            session.setAttribute("iduser", pengguna.getIdUser());
-            response.sendRedirect("home");
-        } else if (!a.cekUser(pengguna)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", pengguna.getUsername());
-            session.setAttribute("password", pengguna.getPassword());
-            session.setAttribute("iduser", pengguna.getIdUser());
-            response.sendRedirect("home");
-        } else {
-            request.setAttribute("errorMessage", "Invalid user or password");
-            response.sendRedirect("index.html");
-        }
+      
     }
 
     /**
