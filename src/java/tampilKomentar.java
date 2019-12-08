@@ -156,9 +156,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
-                            + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
-                            + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
+                            + "<h6 class=\"card-title\">"  + komen.get(i).getWaktuKomentar().toGMTString()+"</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
@@ -241,9 +239,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
-                            + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
-                            + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString()+ "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                             + "<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + " class=\"btn btn-primary\">Hapus Komentar</a>\n"
                             + "</div></div>");
@@ -342,9 +338,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
-                            + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
-                            + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString()+ "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
@@ -429,9 +423,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
-                            + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
-                            + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString()+ "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                             + "<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + " class=\"btn btn-primary\">Hapus Komentar</a>\n"
                             + "</div></div>");

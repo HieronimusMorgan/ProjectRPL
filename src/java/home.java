@@ -123,9 +123,7 @@ public class home extends HttpServlet {
             out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                     + "<h5 class=\"card-header text-white\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h5>\n"
                     + "<div class=\"card-body text-white\">\n"
-                    + "<h6 class=\"card-title\">" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
-                    + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
-                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h6>\n"
+                    + "<h6 class=\"card-title\">" + posting.get(i).getWaktu().toGMTString()+ "</h6>\n"
                     + "<p class=\"card-text\">" + posting.get(i).getIsi() + "</p>\n"
                     + "<a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() + " class=\"btn btn-primary\">Komentar</a>\n"
                     + "</div></div>");
