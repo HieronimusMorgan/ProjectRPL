@@ -75,7 +75,7 @@ public class AkunUser extends HttpServlet {
                 + "<h1>FaceIT </h1>                         "
                 + "<a href=\"home\">Home</a>\n"
                 + "<a class=\"active\"href=\"AkunUser\">Akun</a>\n"
-                + "<a href=\"#\">Kontak & Informasi</a>\n"
+                + "<a href=\"kontakInfo\">Kontak & Informasi</a>\n"
                 + "<a href=\"Logout\">Logout</a>\n"
                 + "</div>\n"
                 + "</form>\n"

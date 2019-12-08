@@ -106,9 +106,9 @@ public class tampilKomentar extends HttpServlet {
                         + "<center>\n"
                         + " <h1>FaceIT</h1>\n"
                         + "</center>\n"
-                        + "<a href=\"home\">Home</a>\n"
+                        + "<a class=\"active\" href=\"home\">Home</a>\n"
                         + "<a href=\"Akun\">Akun</a>\n"
-                        + "<a href=\"#\">Kontak & Informasi</a>\n"
+                        + "<a href=\"kontakInfo\">Kontak & Informasi</a>\n"
                         + "<a href=\"Logout\">Logout</a>\n"
                         + "</div>\n"
                         + "<div class=\"carda\">\n"
@@ -152,13 +152,13 @@ public class tampilKomentar extends HttpServlet {
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
                 for (int i = 0; i < komen.size(); i++) {
-                    out.print("                <div class=\"cardi\">\n"
-                            + "                    <h5 class=\"card-header\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
-                            + "                    <div class=\"card-body\">\n"
-                            + "                        <h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
+                    out.print("<div class=\"cardi\">\n"
+                            + "<h5 class=\"card-header\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                            + "<div class=\"card-body\">\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().getYear() + "-" + komen.get(i).getWaktuKomentar().getMonth() + "-"
                             + komen.get(i).getWaktuKomentar().getDay() + " WIB " + komen.get(i).getWaktuKomentar().getHours() + ":"
                             + komen.get(i).getWaktuKomentar().getMinutes() + ":" + komen.get(i).getWaktuKomentar().getSeconds() + "</h6>\n"
-                            + "                        <p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                            + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
                             out.print("<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + " class=\"btn btn-primary\">Hapus Komentar</a>\n"
@@ -289,9 +289,9 @@ public class tampilKomentar extends HttpServlet {
                         + "        <center>\n"
                         + "            <h1>FaceIT</h1>\n"
                         + "        </center>\n"
-                        + "        <a href=\"home\">Home</a>\n"
+                        + "        <a class=\"active\" href=\"home\">Home</a>\n"
                         + "        <a href=\"Akun\">Akun</a>\n"
-                        + "<a href=\"#\">Kontak & Informasi</a>\n"
+                        + "<a href=\"kontakInfo\">Kontak & Informasi</a>\n"
                         + "        <a href=\"Logout\">Logout</a>\n"
                         + "    </div>\n"
                         + "    <div class=\"carda\">\n"

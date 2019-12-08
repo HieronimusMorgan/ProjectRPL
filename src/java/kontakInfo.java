@@ -13,18 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import object.komentar;
 import object.pengguna;
 import object.postingan;
-import operation.*;
 
 /**
  *
- * @author asus
+ * @author Asus
  */
-@WebServlet(urlPatterns = {"/home"})
-public class home extends HttpServlet {
-
-    operation a = new operation();
+@WebServlet(urlPatterns = {"/kontakInfo"})
+public class kontakInfo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +41,10 @@ public class home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet home</title>");
+            out.println("<title>Servlet kontakInfo</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet home at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet kontakInfo at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,12 +63,8 @@ public class home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession(false);
-        String nama = (String) session.getAttribute("username");
-        String pass = (String) session.getAttribute("password");
-        String id = (String) session.getAttribute("iduser");
-        String nameuser = (String) session.getAttribute("nameuser");
-        out.println("<html>\n"
+
+        out.print("<html>\n"
                 + "\n"
                 + "<head>\n"
                 + "<meta charset=\"utf-8\">\n"
@@ -83,53 +77,41 @@ public class home extends HttpServlet {
                 + "<link rel=\"stylesheet\" href=\"css/bootstrap-theme.min.css\">\n"
                 + "<link rel=\"stylesheet\" href=\"css/bootstrap-grid.min.css\">\n"
                 + "<link rel=\"stylesheet\" href=\"css/templatemo-style.css\">\n"
-                + "<link rel=\"stylesheet\" href=\"css/styleSidebar.css\">\n"
+                + "<link rel=\"stylesheet\" href=\"css/styleSidebar_1.css\">\n"
                 + "\n"
                 + "\n"
-                + "    <script src=\"js/bootstrap.js\"></script>\n"
+                + "<script src=\"js/bootstrap.js\"></script>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
                 + "<div class=\"sidebar\">\n"
                 + "<center>\n"
-                + "<h1>FaceIT</h1>\n"
+                + " <h1>FaceIT</h1>\n"
                 + "</center>\n"
-                + "<a class=\"active\" href=\"home\">Home</a>\n"
-                + "<a href=\"AkunUser\">Akun</a>\n"
-                + "<a href=\"kontakInfo\">Kontak & Informasi</a>\n"
+                + "<a href=\"home\">Home</a>\n"
+                + "<a href=\"Akun\">Akun</a>\n"
+                + "<a class=\"active\" href=\"kontakInfo\">Kontak & Informasi</a>\n"
                 + "<a href=\"Logout\">Logout</a>\n"
-                + "</div>1\n"
-                + "<div class=\"carda\">\n"
-                + "<div class=\"card\">\n"
-                + "<form method=\"GET\" action=\"tambah\" id=\"usrform\">\n"
-                + "<h5 class=\"card-header\">Tambah Postingan</h5>\n"
-                + "<div class=\"card-body\">\n"
-                + "<div class=\"form-group\">\n"
-                + "<textarea class=\"form-control rounded-0\" form=\"usrform\"  rows=\"3\" name=\"posting\" placeholder=\"Tulis disini ...\"></textarea>\n"
-                + "</div>\n"
-                + "<input class=\"btn btn-primary\" type=\"submit\" value=\"Tambah Postingan\">\n"
                 + "</div>\n"
                 + "</form>\n"
                 + "</div>\n"
                 + "</div>\n"
                 + "<div class=\"content\">\n"
                 + "<div class=\"row\">\n"
-                + "<div class=\"leftcolumn\">");
-        java.util.List<postingan> posting;
-
-        posting = a.tampilPostingan();
-        for (int i = 0; i < posting.size(); i++) {
-            out.print("<div class=\"cardi\">\n"
-                    + "<h5 class=\"card-header\">" + a.cariPengirim(posting.get(i).getIdUser(), posting.get(i).getIdAdmin()) + "</h5>\n"
-                    + "<div class=\"card-body\">\n"
-                    + "<h6 class=\"card-title\">" + posting.get(i).getWaktu().getYear() + "-" + posting.get(i).getWaktu().getMonth() + "-"
-                    + posting.get(i).getWaktu().getDay() + " WIB " + posting.get(i).getWaktu().getHours() + ":"
-                    + posting.get(i).getWaktu().getMinutes() + ":" + posting.get(i).getWaktu().getSeconds() + "</h6>\n"
-                    + "<p class=\"card-text\">" + posting.get(i).getIsi() + "</p>\n"
-                    + "<a href=tampilKomentar?idPostingan=" + posting.get(i).getIdPostingan() + " class=\"btn btn-primary\">Komentar</a>\n"
-                    + "</div></div>");
-        }
-
+                + "<div class=\"leftcolumn\">"
+                + "<h2>Kontak & Informasi FaceIT</h2>"
+                + "<br><br>"
+                + "<h3>Informasi :</h3>"
+                + "<p>Ini merupakan forum diskusi bagi Program Studi Informatika Universitas Sanata Dharma Yogyakarta</p>"
+                + "<br><br>"
+                + "<h3>Apabila Terjadi Kesalahan :</h3>"
+                + "<p>Hubungi Sekretariat Informatika</p>"
+                + "<p>Tlp : (0274) 883037</p>"
+                + "<br><br>"
+                + "<h3>Alamat :</h3>"
+                + "<p>Jl. Paingan, Maguwoharjo, Depok, Krodan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</p>"
+                + "<br><br>"
+                + "");
         out.print(
                 "</div>\n"
                 + "</div>\n"
@@ -137,7 +119,6 @@ public class home extends HttpServlet {
                 + "</body>\n"
                 + "\n"
                 + "</html>");
-        session.removeAttribute("idPostingan");
     }
 
     /**
@@ -151,28 +132,7 @@ public class home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        pengguna pengguna = a.operation(username, password);
-        if (a.cekUser(pengguna)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", pengguna.getUsername());
-            session.setAttribute("password", pengguna.getPassword());
-            session.setAttribute("iduser", pengguna.getIdUser());
-            session.setAttribute("nameuser", pengguna.getName());
-            response.sendRedirect("home");
-        } else if (!a.cekUser(pengguna)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", pengguna.getUsername());
-            session.setAttribute("password", pengguna.getPassword());
-            session.setAttribute("iduser", pengguna.getIdUser());
-            session.setAttribute("nameuser", pengguna.getName());
-            response.sendRedirect("homeAdmin");
-        } else {
-            request.setAttribute("errorMessage", "Invalid user or password");
-            response.sendRedirect("index.html");
-        }
+        processRequest(request, response);
     }
 
     /**
