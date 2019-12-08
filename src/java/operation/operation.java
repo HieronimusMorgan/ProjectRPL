@@ -369,7 +369,7 @@ public class operation {
         }
         return post;
     }
-    
+
     public komentar cariKomentar(String id) {
         komentar kom = new komentar();
         try {

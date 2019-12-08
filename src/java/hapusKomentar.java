@@ -22,7 +22,7 @@ import operation.operation;
  */
 @WebServlet(urlPatterns = {"/hapusKomentar"})
 public class hapusKomentar extends HttpServlet {
-    
+
     operation a = new operation();
 
     /**
@@ -42,7 +42,7 @@ public class hapusKomentar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet hapusKomentar</title>");            
+            out.println("<title>Servlet hapusKomentar</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet hapusKomentar at " + request.getContextPath() + "</h1>");
@@ -65,12 +65,12 @@ public class hapusKomentar extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         //String id = (String) session.getAttribute("idKomentar");       
-        String id =request.getParameter("idKomentar");
-        System.out.println(id+"asdasdasdasd");
+        String id = request.getParameter("idKomentar");
+        System.out.println(id + "asdasdasdasd");
         komentar pos = a.cariKomentar(id);
-        System.out.println(pos.getIdKomentar()+"pstingan");
+        System.out.println(pos.getIdKomentar() + "pstingan");
         a.hapusKomentar(pos);
-        response.sendRedirect("tampilKomentar?idPostingan="+(String)session.getAttribute("idPostingan"));
+        response.sendRedirect("tampilKomentar?idPostingan=" + (String) session.getAttribute("idPostingan"));
     }
 
     /**
@@ -84,7 +84,7 @@ public class hapusKomentar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
     }
 
     /**

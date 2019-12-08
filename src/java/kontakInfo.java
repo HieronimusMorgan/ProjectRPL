@@ -77,7 +77,7 @@ public class kontakInfo extends HttpServlet {
                 + "<link rel=\"stylesheet\" href=\"css/bootstrap-theme.min.css\">\n"
                 + "<link rel=\"stylesheet\" href=\"css/bootstrap-grid.min.css\">\n"
                 + "<link rel=\"stylesheet\" href=\"css/templatemo-style.css\">\n"
-                + "<link rel=\"stylesheet\" href=\"css/styleSidebar_1.css\">\n"
+                + "<link rel=\"stylesheet\" href=\"css/styleSidebar_1_1.css\">\n"
                 + "\n"
                 + "\n"
                 + "<script src=\"js/bootstrap.js\"></script>\n"
@@ -96,9 +96,14 @@ public class kontakInfo extends HttpServlet {
                 + "</form>\n"
                 + "</div>\n"
                 + "</div>\n"
-                + "<div class=\"content\">\n"
-                + "<div class=\"row\">\n"
-                + "<div class=\"leftcolumn\">"
+                + "<div class=\"coba\">\n"
+                + "     \n"
+                + "            <div class=\"leftcolumn\">\n"
+                + "                <div class=\"cardi\">\n"
+                + "                    <div class=\"container-md\">\n"
+                + "                        <div class=\"row justify-content-md-center\">\n"
+                + "                            <div class=\"card text-center row-4\">\n"
+                + "                                <div class=\"card-body\">\n"
                 + "<h2>Kontak & Informasi FaceIT</h2>"
                 + "<br><br>"
                 + "<h3>Informasi :</h3>"
@@ -111,14 +116,17 @@ public class kontakInfo extends HttpServlet {
                 + "<h3>Alamat :</h3>"
                 + "<p>Jl. Paingan, Maguwoharjo, Depok, Krodan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</p>"
                 + "<br><br>"
-                + "");
-        out.print(
-                "</div>\n"
-                + "</div>\n"
-                + "</div>\n"
+                + "                            </div>\n"
+                + "                        </div>\n"
+                + "                    </div>\n"
+                + "                </div>\n"
+                + "            </div>\n"
+                + "        </div>\n"
+                + "   \n"
                 + "</body>\n"
                 + "\n"
                 + "</html>");
+                
     }
 
     /**

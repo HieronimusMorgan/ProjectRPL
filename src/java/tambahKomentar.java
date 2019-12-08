@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import object.komentar;
-import object.pengguna;
 import operation.operation;
 
 /**
@@ -71,7 +69,7 @@ public class tambahKomentar extends HttpServlet {
         String id = (String) session.getAttribute("iduser");
         String isi = request.getParameter("komentar");
         String idPos = (String) session.getAttribute("idPostingan");
-        
+
         a.tambahKomentar(nama, pass, id, isi, idPos);
         response.sendRedirect("tampilKomentar?idPostingan=" + idPos);
     }
