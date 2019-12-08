@@ -20,7 +20,7 @@ import operation.operation;
  */
 @WebServlet(urlPatterns = {"/TambahUser"})
 public class TambahUser extends HttpServlet {
-    
+
     operation op = new operation();
 
     /**
@@ -40,7 +40,7 @@ public class TambahUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TambahUser</title>");            
+            out.println("<title>Servlet TambahUser</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TambahUser at " + request.getContextPath() + "</h1>");
@@ -65,11 +65,10 @@ public class TambahUser extends HttpServlet {
         p.setName(request.getParameter("nama"));
         p.setUsername(request.getParameter("NIM"));
         p.setPassword(request.getParameter("NIM"));
-        String id = p.getUsername().substring(0, 2)+""+p.getUsername().substring(6, 9);
+        String id = p.getUsername().substring(0, 2) + "" + p.getUsername().substring(6, 9);
         p.setIdUser(id);
-        
+
         op.tambahUser(p);
-        
         response.sendRedirect("KelolaUser");
     }
 

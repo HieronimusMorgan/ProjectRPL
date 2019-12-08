@@ -73,6 +73,9 @@ public class KelolaUser extends HttpServlet {
                 + "<head>\n"
                 + "<title>FaceIT</title>\n"
                 + "<link rel=\"stylesheet\" type=\"text/css\" href=\"style_kelola.css\">\n"
+                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/bootstrap.css\">"
+                + "<script type=\"text/javascript\" src=\"js/jquery.js\"></script>\n"
+                + "<script type=\"text/javascript\" src=\"js/bootstrap.js\"></script>	"
                 + "</head>\n"
                 + "<body>\n"
                 + "<div class=\"sidebar\">\n"
@@ -114,29 +117,28 @@ public class KelolaUser extends HttpServlet {
         );
 
         if (!data.isEmpty()) {
-            out.print("<div class='table-box'");
-            out.print("<center>");
-            out.print("<h1>Data User</h1>");
-            out.print("<table border=3>");
-            out.print("<tr>");
-            out.print("<td style='color:White;'>ID User</td>");
-            out.print("<td style='color:White;'>Nama</td>");
-            out.print("<td style='color:White;'>Username</td>");
-            out.print("<td style='color:White;'>Password</td>");
-            out.print("</tr>");
+            out.print("<table class=\"table table-bordered table-striped\">\n"
+                    + "<thead>\n"
+                    + "<tr>\n"
+                    + "<th scope=\"col\">No</th>\n"
+                    + "<th scope=\"col\">Id User</th>\n"
+                    + "<th scope=\"col\">Nama</th>\n"
+                    + "<th scope=\"col\">NIM</th>\n"
+                    + "</tr>\n"
+                    + "</thead>"
+                    + "<tbody>");
 
             for (int i = 0; i < data.size(); i++) {
-                out.print("<tr>");
-                out.print("<td style='color:White;'>" + data.get(i).getIdUser() + "</td>");
-                out.print("<td style='color:White;'>" + data.get(i).getName() + "</td>");
-                out.print("<td style='color:White;'>" + data.get(i).getUsername() + "</td>");
-                out.print("<td style='color:White;'>" + data.get(i).getPassword() + "</td>");
-                out.print("</tr>");
+                out.print("<tr>\n"
+                        + "<th scope=\"row\">" + (i + 1) + "</th>\n"
+                        + "<td>" + data.get(i).getIdUser() + "</td>\n"
+                        + "<td>" + data.get(i).getName() + "</td>\n"
+                        + "<td>" + data.get(i).getUsername() + "</td>\n"
+                        + "</tr>\n"
+                        + "<tr>");
             }
-
+            out.print("</tbody>");
             out.print("</table>");
-            out.print("</center>");
-            out.print("</div>");
         }
         out.print("</div>\n");
         out.print("</div>\n"

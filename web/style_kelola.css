@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(image.jpg);
+    background: url(USD2.png);
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
@@ -231,6 +231,21 @@ textarea{
 
 .tambah{
     margin-left: 25%;
+}
+
+
+.table-bordered{
+    margin-top: 320px;
+    margin-left: 10%;
+}
+
+.table-bordered td {
+    color: white;
+    
+}
+.table-bordered th {
+    color: white;
+    
 }
 
 
