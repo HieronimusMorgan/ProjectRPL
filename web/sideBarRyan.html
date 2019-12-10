@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+        <link rel="stylesheet" href="cssRyan.css">
+        <script>
+            function openSlideMenu() {
+                document.getElementById('menu').style.width = '250px';
+                document.getElementById('content').style.marginLeft = '250px';
+            }
+            function closeSlideMenu() {
+                document.getElementById('menu').style.width = '0';
+                document.getElementById('content').style.marginLeft = '0';
+            }
+        </script>
+    </head>
+    <body>
+
+        <div id="content">
+
+            <span class="slide">
+                <a href="#" onclick="openSlideMenu()">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </span>
+
+            <div id="menu" class="nav">
+                <a href="#" class="close" onclick="closeSlideMenu()">
+                    <i class="fas fa-times"></i>
+                </a>
+                <center>
+                <h1 style="color:white;"> FaceIT </h1>
+                </center>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Akun</a></li>
+                    <li><a href="#">Kontak & Informasi</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+            
+        </body>
+</html>

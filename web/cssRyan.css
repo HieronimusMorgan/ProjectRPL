@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 9, 2019, 10:32:28 PM
+    Author     : Ryan
+*/
+
+body {
+    background-image: url(USD2.png);
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    font-family: sans-serif;   
+    background-repeat: no-repeat;
+    overflow: hidden;
+    
+}
+.nav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #2D3135;
+	opacity: .9;
+	overflow:auto;
+	padding-top: 60px;
+	transition: 0.7s;
+}
+.nav ul {
+	padding: 0;
+}
+.nav li:hover {
+	border-left: 9px solid #3E84C1;
+	background-color: #34383D;
+}
+.nav a {
+	display: block;
+	padding: 20px 30px;
+	font-size: 25px;
+	text-decoration: none;
+	color: white;
+}
+.nav a:hover {
+	color: #fff;
+	transition: 0.4s;
+}
+.nav .close {
+	position: absolute;
+	top: 0;
+	right: 22px;
+	margin-left: 50px;
+	font-size: 25px;
+}
+.nav a.active {
+    background-color: rgb(37, 37, 37);
+}
+.slide a {
+	color: white;
+	font-size: 25px;
+}
+#content {
+	padding: 20px;
+	transition: margin-left 0.7s;
+	overflow: auto;
+	width: 100%;
+}
