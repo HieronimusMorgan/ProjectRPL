@@ -84,9 +84,13 @@ body {
     transition: 0.7s;
 }
 
+.content1{
+    
+}
 .card1{
     height: 100%;
     width: 0;
+    position: fixed;
     top: 0;
     left: 2px;
     margin-left: 100px;
