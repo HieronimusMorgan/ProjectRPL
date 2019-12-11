@@ -12,33 +12,39 @@ and open the template in the editor.
 
         <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
         <link rel="stylesheet" href="cssRyan.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styleSidebar.css">
+        <link rel="stylesheet" href="css/templatemo-style.css">
+
         <script>
             function openSlideMenu() {
                 document.getElementById('menu').style.width = '250px';
                 document.getElementById('content').style.marginLeft = '250px';
+                document.getElementById('card').style.marginRight = '250px';
+                document.getElementById('card1').style.marginRight = '250px';
+
             }
             function closeSlideMenu() {
                 document.getElementById('menu').style.width = '0';
                 document.getElementById('content').style.marginLeft = '0';
+                document.getElementById('card').style.marginRight = '0';
+                document.getElementById('card1').style.marginRight = '0';
             }
         </script>
     </head>
     <body>
-
         <div id="content">
-
             <span class="slide">
                 <a href="#" onclick="openSlideMenu()">
                     <i class="fas fa-bars"></i>
                 </a>
             </span>
-
             <div id="menu" class="nav">
                 <a href="#" class="close" onclick="closeSlideMenu()">
                     <i class="fas fa-times"></i>
                 </a>
                 <center>
-                <h1 style="color:white;"> FaceIT </h1>
+                    <h1 style="color:white;"> FaceIT </h1>
                 </center>
                 <ul>
                     <li><a href="#" class="active">Home</a></li>
@@ -47,10 +53,47 @@ and open the template in the editor.
                     <li><a href="index.html">Logout</a></li>
                 </ul>
             </div>
-            
-            
-            
-            
-            
-        </body>
+            <div id="card">
+                <div class="card bg-dark rounded-sm">
+                    <form method="GET" action="tambah" id="usrform">
+                        <h5 class="card-header text-white">Tambah Postingan</h5>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <textarea class="form-control rounded-0" form="usrform"  rows="3" name="posting" placeholder="Tulis disini ..."></textarea>
+                            </div>
+                            <input class="btn btn-primary" type="submit" value="Tambah Postingan">
+                        </div>
+                    </form>
+                </div>
+            </div>            
+        </div>
+<!--        <div id="card1">
+            <div class="card bg-transparent border border-white rounded-lg">
+                <h5 class="card-header text-white"> asdasdasdasd </h5>
+                <div class="card-body text-white">
+                    <h6 class="card-title"></h6>
+                    <p class="card-text">asdasdasdasd</p>
+                </div>
+            </div> <div class="card bg-transparent border border-white rounded-lg">
+                <h5 class="card-header text-white"> asdasdasdasd </h5>
+                <div class="card-body text-white">
+                    <h6 class="card-title"></h6>
+                    <p class="card-text">asdasdasdasd</p>
+                </div>
+            </div> <div class="card bg-transparent border border-white rounded-lg">
+                <h5 class="card-header text-white"> asdasdasdasd </h5>
+                <div class="card-body text-white">
+                    <h6 class="card-title"></h6>
+                    <p class="card-text">asdasdasdasd</p>
+                </div>
+            </div> <div class="card bg-transparent border border-white rounded-lg">
+                <h5 class="card-header text-white"> asdasdasdasd </h5>
+                <div class="card-body text-white">
+                    <h6 class="card-title"></h6>
+                    <p class="card-text">asdasdasdasd</p>
+                </div>
+            </div>
+        </div>-->
+        
+    </body>
 </html>

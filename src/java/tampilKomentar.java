@@ -108,7 +108,7 @@ public class tampilKomentar extends HttpServlet {
                         + " <h1 class=\"text-white\">FaceIT</h1>\n"
                         + "</center>\n"
                         + "<a class=\"text-white\" href=\"home\">Home</a>\n"
-                        + "<a class=\"text-white\" href=\"Akun\">Akun</a>\n"
+                        + "<a class=\"text-white\" href=\"AkunUser\">Akun</a>\n"
                         + "<a class=\"text-white\" href=\"kontakInfo\">Kontak & Informasi</a>\n"
                         + "<a class=\"text-white\" href=\"Logout\">Logout</a>\n"
                         + "</div>\n"
@@ -156,7 +156,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">"  + komen.get(i).getWaktuKomentar().toGMTString()+"</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
@@ -239,7 +239,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString()+ "</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                             + "<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + " class=\"btn btn-primary\">Hapus Komentar</a>\n"
                             + "</div></div>");
@@ -289,7 +289,7 @@ public class tampilKomentar extends HttpServlet {
                         + " <h1 class=\"text-white\">FaceIT</h1>\n"
                         + "</center>\n"
                         + "<a class=\"text-white\" href=\"home\">Home</a>\n"
-                        + "<a class=\"text-white\" href=\"Akun\">Akun</a>\n"
+                        + "<a class=\"text-white\" href=\"Akun\">AkunUser</a>\n"
                         + "<a class=\"text-white\" href=\"kontakInfo\">Kontak & Informasi</a>\n"
                         + "<a class=\"text-white\" href=\"Logout\">Logout</a>\n"
                         + "</div>\n"
@@ -338,7 +338,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString()+ "</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
@@ -423,7 +423,7 @@ public class tampilKomentar extends HttpServlet {
                     out.print("<<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString()+ "</h6>\n"
+                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
                             + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                             + "<a href=hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + " class=\"btn btn-primary\">Hapus Komentar</a>\n"
                             + "</div></div>");
