@@ -171,7 +171,7 @@ public class home extends HttpServlet {
                 response.sendRedirect("homeAdmin");
             }
         } else {
-            response.sendRedirect("index.html");
+            response.sendRedirect("index_1.html");
         }
 
     }

@@ -393,4 +393,15 @@ public class operation {
         return kom;
     }
 
+    public void ubahPassword(String id, String baru) {
+        try {
+            conn = new DatabaseConnection();
+            String sql = "UPDATE USER SET passwordUser='"+baru+"' WHERE idUser = '" + id+ "'";
+            java.sql.Statement stat = conn.getConnection().createStatement();
+            stat.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

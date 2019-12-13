@@ -17,10 +17,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Asus
  */
-@WebServlet(urlPatterns = {"/AkunUser"})
-public class AkunUser extends HttpServlet {
-    
-    
+@WebServlet(urlPatterns = {"/ubahPass"})
+public class ubahPass extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -84,6 +82,25 @@ public class AkunUser extends HttpServlet {
                 + "<link rel=\"stylesheet\" href=\"css/styleSidebar_1_1.css\">\n"
                 + "</head>\n"
                 + "<body>\n"
+                + "<div class=\"modal fade\" id=\"modalUbah\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
+                + "            <div class=\"modal-dialog\" role=\"document\">\n"
+                + "                <div class=\"modal-content\">\n"
+                + "                    <div class=\"modal-header\">\n"
+                + "                        <h5 class=\"modal-title\">UBAH PASSWORD</h5>\n"
+                + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
+                + "                            <span aria-hidden=\"true\">&times;</span>\n"
+                + "                        </button>\n"
+                + "                    </div>\n"
+                + "                    <div class=\"modal-body\">\n"
+                + "                        <p>Apakah anda yakin mengubah password akun anda?</p>\n"
+                + "                    </div>\n"
+                + "                    <div class=\"modal-footer\">\n"
+                + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='ubahPassword'\">Ubah</button>\n"
+                + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
+                + "                    </div>\n"
+                + "                </div>\n"
+                + "            </div>\n"
+                + "        </div>"
                 + "<div class=\"sidebar bg-transparent\">\n"
                 + "<h1 class=\"text-white\">FaceIT </h1>                         "
                 + "<a class=\"text-white\" href=\"home\">Home</a>\n"
@@ -109,14 +126,14 @@ public class AkunUser extends HttpServlet {
                 + "<form>\n"
                 + "<p>Nama User</p>\n"
                 + "<input type=\"text\" name=\"nama\" value=\"" + nameuser + "\" disabled>\n"
-                + "<p>Username</p>\n"
-                + "<input type=\"text\" name=\"NIM\" value=\"" + nama + "\" disabled>\n"
-                + "<p>Password</p>\n"
-                + "<input type=\"text\" name=\"NIM\" value=\"" + nama + "\" disabled>\n"
+                + "<p>Password Lama</p>\n"
+                + "<input type=\"text\" name=\"passLama\" value=\"" + nama + "\" disabled>\n"
+                + "<p>Password Baru</p>\n"
+                + "<input type=\"text\" name=\"passBaru\" value=\"\">\n"
                 + "<p>*NIM adalah Username dan Password User</p>\n"
                 + "<br>"
-                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='home';\">\n"
-                + "<input type=\"submit\" name=\"ubah\" value=\"Ubah Password\" onclick=\"form.action='ubahPass';\">\n"
+                + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalUbah\">Ubah Password</button>\n"
+                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='AkunUser';\">\n"
                 + "</form>\n"
                 + "</div>\n"
                 + "</body>\n"
@@ -125,6 +142,9 @@ public class AkunUser extends HttpServlet {
         out.print("</div>\n");
         out.print("</div>\n"
                 + "</div>\n"
+                + " <script src=\"https://code.jquery.com/jquery-3.4.1.slim.min.js\" integrity=\"sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n\" crossorigin=\"anonymous\"></script>\n"
+                + " <script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script>\n"
+                + " <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js\" integrity=\"sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6\" crossorigin=\"anonymous\"></script>"
                 + "</body>\n"
                 + "</html>");
     }
