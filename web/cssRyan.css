@@ -15,7 +15,7 @@ body {
     background-size: cover;
     font-family: sans-serif;   
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow-y: scroll;
 
 }
 .nav {
@@ -27,7 +27,7 @@ body {
     left: 0;
     background-color: #2D3135;
     opacity: .9;
-    overflow:auto;
+    overflow:hidden;
     padding-top: 60px;
     transition: 0.7s;
 }
@@ -66,8 +66,8 @@ body {
 #content {
     padding: 20px;
     transition: margin-left 0.7s;
-    overflow: auto;
     width: 100%;
+    overflow: auto;
 }
 .card{
     height: 100%;
@@ -84,9 +84,7 @@ body {
     transition: 0.7s;
 }
 
-.content1{
-    
-}
+
 .card1{
     height: 100%;
     width: 0;
