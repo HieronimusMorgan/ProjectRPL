@@ -20,7 +20,7 @@ import operation.operation;
  */
 @WebServlet(urlPatterns = {"/HapusUser"})
 public class HapusUser extends HttpServlet {
-    
+
     operation op = new operation();
 
     /**
@@ -40,7 +40,7 @@ public class HapusUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HapusUser</title>");            
+            out.println("<title>Servlet HapusUser</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HapusUser at " + request.getContextPath() + "</h1>");
@@ -61,17 +61,23 @@ public class HapusUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         pengguna p = new pengguna();
         p.setName(request.getParameter("nama"));
         p.setUsername(request.getParameter("NIM"));
-        p.setPassword(request.getParameter("NIM"));
-        String id = p.getUsername().substring(0, 2)+""+p.getUsername().substring(6, 9);
-        p.setIdUser(id);
-        
-        op.hapusUser(p);
-        
-        response.sendRedirect("KelolaUser");
+        System.out.println(p.getName() + p.getUsername());
+        if (p.getName().equals("") || p.getUsername().equals("")) {
+            response.sendRedirect("KelolaUser1");
+        } else {
+            p = new pengguna();
+            p.setName(request.getParameter("nama"));
+            p.setUsername(request.getParameter("NIM"));
+            p.setPassword(request.getParameter("NIM"));
+            String id = p.getUsername().substring(0, 2) + "" + p.getUsername().substring(6, 9);
+            p.setIdUser(id);
+            op.hapusUser(p);
+            response.sendRedirect("KelolaUser");
+        }
+
     }
 
     /**

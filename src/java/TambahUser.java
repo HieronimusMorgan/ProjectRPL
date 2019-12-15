@@ -64,12 +64,21 @@ public class TambahUser extends HttpServlet {
         pengguna p = new pengguna();
         p.setName(request.getParameter("nama"));
         p.setUsername(request.getParameter("NIM"));
-        p.setPassword(request.getParameter("NIM"));
-        String id = p.getUsername().substring(0, 2) + "" + p.getUsername().substring(6, 9);
-        p.setIdUser(id);
+        System.out.println(p.getName()+p.getUsername());
+        if (p.getName().equals("") || p.getUsername().equals("")) {
+            response.sendRedirect("KelolaUser1");
+        } else {
+            p = new pengguna();
+            p.setName(request.getParameter("nama"));
+            p.setUsername(request.getParameter("NIM"));
+            p.setPassword(request.getParameter("NIM"));
+            String id = p.getUsername().substring(0, 2) + "" + p.getUsername().substring(6, 9);
+            p.setIdUser(id);
 
-        op.tambahUser(p);
-        response.sendRedirect("KelolaUser");
+            op.tambahUser(p);
+            response.sendRedirect("KelolaUser");
+        }
+
     }
 
     /**

@@ -63,15 +63,19 @@ public class tambahKomentar extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
+        if (request.getParameter("komentar").equals("")) {
+             response.sendRedirect("tampilKomentar");
+        }else{
+            String nama = (String) session.getAttribute("username");
+            String pass = (String) session.getAttribute("password");
+            String id = (String) session.getAttribute("iduser");
+            String isi = request.getParameter("komentar");
+            String idPos = (String) session.getAttribute("idPostingan");
 
-        String nama = (String) session.getAttribute("username");
-        String pass = (String) session.getAttribute("password");
-        String id = (String) session.getAttribute("iduser");
-        String isi = request.getParameter("komentar");
-        String idPos = (String) session.getAttribute("idPostingan");
-
-        a.tambahKomentar(nama, pass, id, isi, idPos);
-        response.sendRedirect("tampilKomentar?idPostingan=" + idPos);
+            a.tambahKomentar(nama, pass, id, isi, idPos);
+            response.sendRedirect("tampilKomentar?idPostingan=" + idPos);
+        }
+      
     }
 
     /**

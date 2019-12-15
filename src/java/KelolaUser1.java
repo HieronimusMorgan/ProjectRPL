@@ -20,8 +20,8 @@ import operation.operation;
  *
  * @author Asus
  */
-@WebServlet(urlPatterns = {"/KelolaUser"})
-public class KelolaUser extends HttpServlet {
+@WebServlet(urlPatterns = {"/KelolaUser1"})
+public class KelolaUser1 extends HttpServlet {
 
     operation op = new operation();
 
@@ -112,6 +112,7 @@ public class KelolaUser extends HttpServlet {
                 + "<br>"
                 + "<input type=\"submit\" name=\"Tambah\" value=\"Tambah\" onclick=\"form.action='TambahUser';\">\n"
                 + "<input type=\"submit\" name=\"Hapus\" value=\"Hapus\" onclick=\"form.action='HapusUser';\">\n"
+                + "<p style=\"color: red;\">*Nama Lengkap dan NIM Tidak Lengkap</p>"
                 + "</form>\n"
                 + "</div>\n"
                 + "</body>"

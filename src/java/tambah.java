@@ -68,14 +68,22 @@ public class tambah extends HttpServlet {
         String iduser = (String) session.getAttribute("iduser");
         String posting = request.getParameter("posting");
         pengguna pengguna = a.operation(username, password);
-        if (a.cekUser(pengguna)) {
-            System.out.println(posting);
-            a.tambahPostingan(username, password, iduser, posting);
-            response.sendRedirect("home");
+        if (request.getParameter("posting").equals("")) {
+            if (a.cekUser(pengguna)) {
+                response.sendRedirect("home");
+            } else {
+                response.sendRedirect("homeAdmin");
+            }
         } else {
-            System.out.println(posting);
-            a.tambahPostingan(username, password, iduser, posting);
-            response.sendRedirect("homeAdmin");
+            if (a.cekUser(pengguna)) {
+                System.out.println(posting);
+                a.tambahPostingan(username, password, iduser, posting);
+                response.sendRedirect("home");
+            } else {
+                System.out.println(posting);
+                a.tambahPostingan(username, password, iduser, posting);
+                response.sendRedirect("homeAdmin");
+            }
         }
 
     }
