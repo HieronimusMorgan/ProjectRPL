@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import object.pengguna;
 import object.postingan;
 import operation.operation;
 
@@ -63,11 +64,18 @@ public class hapusPostingan extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        String id = (String) session.getAttribute("idPostingan");  
+        String id = (String) session.getAttribute("idPostingan");
+        String nama = (String) session.getAttribute("username");
+        String pass = (String) session.getAttribute("password");
         postingan pos = a.cariPostingan(id);
-        System.out.println(pos.getIdPostingan() +"pstingan");
+        System.out.println(pos.getIdPostingan() + "pstingan");
         a.hapusPostingan(pos);
-        response.sendRedirect("homeAdmin");
+        pengguna pengguna = a.operation(nama, pass);
+        if (a.cekUser(pengguna)) {
+            response.sendRedirect("home");
+        } else {
+            response.sendRedirect("homeAdmin   ");
+        }
     }
 
     /**

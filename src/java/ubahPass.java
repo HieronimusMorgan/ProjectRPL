@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import object.pengguna;
+import operation.operation;
 
 /**
  *
@@ -19,6 +21,8 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/ubahPass"})
 public class ubahPass extends HttpServlet {
+
+    operation a = new operation();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -82,25 +86,6 @@ public class ubahPass extends HttpServlet {
                 + "<link rel=\"stylesheet\" href=\"css/styleSidebar_1_1.css\">\n"
                 + "</head>\n"
                 + "<body>\n"
-                + "<div class=\"modal fade\" id=\"modalUbah\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
-                + "            <div class=\"modal-dialog\" role=\"document\">\n"
-                + "                <div class=\"modal-content\">\n"
-                + "                    <div class=\"modal-header\">\n"
-                + "                        <h5 class=\"modal-title\">UBAH PASSWORD</h5>\n"
-                + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
-                + "                            <span aria-hidden=\"true\">&times;</span>\n"
-                + "                        </button>\n"
-                + "                    </div>\n"
-                + "                    <div class=\"modal-body\">\n"
-                + "                        <p>Apakah anda yakin mengubah password akun anda?</p>\n"
-                + "                    </div>\n"
-                + "                    <div class=\"modal-footer\">\n"
-                + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='ubahPassword'\">Ubah</button>\n"
-                + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
-                + "                    </div>\n"
-                + "                </div>\n"
-                + "            </div>\n"
-                + "        </div>"
                 + "<div class=\"sidebar bg-transparent\">\n"
                 + "<h1 class=\"text-white\">FaceIT </h1>                         "
                 + "<a class=\"text-white\" href=\"home\">Home</a>\n"
@@ -127,12 +112,12 @@ public class ubahPass extends HttpServlet {
                 + "<p>Nama User</p>\n"
                 + "<input type=\"text\" name=\"nama\" value=\"" + nameuser + "\" disabled>\n"
                 + "<p>Password Lama</p>\n"
-                + "<input type=\"text\" name=\"passLama\" value=\"" + nama + "\" disabled>\n"
+                + "<input type=\"text\" name=\"passLama\" value=\"" + pass + "\" disabled>\n"
                 + "<p>Password Baru</p>\n"
                 + "<input type=\"text\" name=\"passBaru\" value=\"\">\n"
-                + "<p>*NIM adalah Username dan Password User</p>\n"
+                + "<p>*NIM adalah Username dan Password User default</p>\n"
                 + "<br>"
-                + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalUbah\">Ubah Password</button>\n"
+                + "<input type=\"submit\" name=\"ubah\" value=\"Ubah Password\" onclick=\"form.action='ubahPassword';\">\n"
                 + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='AkunUser';\">\n"
                 + "</form>\n"
                 + "</div>\n"
@@ -147,6 +132,7 @@ public class ubahPass extends HttpServlet {
                 + " <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js\" integrity=\"sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6\" crossorigin=\"anonymous\"></script>"
                 + "</body>\n"
                 + "</html>");
+
     }
 
     /**

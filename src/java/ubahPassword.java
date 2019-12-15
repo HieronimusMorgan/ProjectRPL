@@ -65,12 +65,14 @@ public class ubahPassword extends HttpServlet {
         HttpSession session = request.getSession(false);
         String nama = (String) session.getAttribute("username");
         String pass = (String) session.getAttribute("password");
-        String id = (String) session.getAttribute("iduser");
+        String idUser = (String) session.getAttribute("iduser");
+        String idAdmin = (String) session.getAttribute("idAdmin");
         String baru = request.getParameter("passBaru");
-        
+        session.setAttribute("password", baru);
+        op.ubahPassword(idUser, baru);
 
-        op.ubahPassword(id, baru);
-        response.sendRedirect("ubahPass");
+        response.sendRedirect("AkunUser");
+
     }
 
     /**

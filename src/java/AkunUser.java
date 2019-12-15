@@ -19,8 +19,6 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/AkunUser"})
 public class AkunUser extends HttpServlet {
-    
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -112,11 +110,11 @@ public class AkunUser extends HttpServlet {
                 + "<p>Username</p>\n"
                 + "<input type=\"text\" name=\"NIM\" value=\"" + nama + "\" disabled>\n"
                 + "<p>Password</p>\n"
-                + "<input type=\"text\" name=\"NIM\" value=\"" + nama + "\" disabled>\n"
-                + "<p>*NIM adalah Username dan Password User</p>\n"
+                + "<input type=\"text\" name=\"NIM\" value=\"" + pass + "\" disabled>\n"
+                + "<p>*NIM adalah Username dan Password User default</p>\n"
                 + "<br>"
-                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='home';\">\n"
                 + "<input type=\"submit\" name=\"ubah\" value=\"Ubah Password\" onclick=\"form.action='ubahPass';\">\n"
+                + "<input type=\"submit\" name=\"kembali\" value=\"Kembali\" onclick=\"form.action='home';\">\n"
                 + "</form>\n"
                 + "</div>\n"
                 + "</body>\n"
