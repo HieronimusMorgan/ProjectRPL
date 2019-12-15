@@ -175,18 +175,20 @@ public class tampilKomentar extends HttpServlet {
                 postingan p = new postingan();
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
-                out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
-                        + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(0).getIdUser(), komen.get(0).getIdAdmin()) + "</h5>\n"
-                        + "<div class=\"card-body text-white\">\n"
-                        + "<h6 class=\"card-title\">" + komen.get(0).getWaktuKomentar().toGMTString() + "</h6>\n"
-                        + "<p class=\"card-text\">" + komen.get(0).getIsiKomentar() + "</p>\n"
-                        + "</div></div>");
-                for (int i = 1; i < komen.size(); i++) {
-                    out.print("<div class=\"cardu  bg-transparent border border-white rounded-lg\">\n"
-                            + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
-                            + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
-                            + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                for (int i = 0; i < komen.size(); i++) {
+                    if (i == 0) {
+                        out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                    } else {
+                        out.print("<div class=\"cardu  bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                    }
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
                             out.print("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
@@ -308,32 +310,61 @@ public class tampilKomentar extends HttpServlet {
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
                 for (int i = 0; i < komen.size(); i++) {
-                    out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
-                            + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
-                            + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
-                            + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
-                            + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
-                            + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
-                            + "            <div class=\"modal-dialog\" role=\"document\">\n"
-                            + "                <div class=\"modal-content\">\n"
-                            + "                    <div class=\"modal-header\">\n"
-                            + "                        <h5 class=\"modal-title\" style=\"color:black;\">HAPUS KOMENTAR</h5>\n"
-                            + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
-                            + "                            <span aria-hidden=\"true\">&times;</span>\n"
-                            + "                        </button>\n"
-                            + "                    </div>\n"
-                            + "                    <div class=\"modal-body\">\n"
-                            + "                        <p style=\"color:black;\">Apakah anda yakin menghapus komentar ini?</p>\n"
-                            + "                    </div>\n"
-                            + "                    <div class=\"modal-footer\">\n"
-                            + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + "'\">Hapus</button>\n"
-                            + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
-                            + "                    </div>\n"
-                            + "                </div>\n"
-                            + "            </div>\n"
-                            + "        </div>"
-                            + "</div></div>");
+                    if (i == 0) {
+                        out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                                + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
+                                + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
+                                + "            <div class=\"modal-dialog\" role=\"document\">\n"
+                                + "                <div class=\"modal-content\">\n"
+                                + "                    <div class=\"modal-header\">\n"
+                                + "                        <h5 class=\"modal-title\" style=\"color:black;\">HAPUS KOMENTAR</h5>\n"
+                                + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
+                                + "                            <span aria-hidden=\"true\">&times;</span>\n"
+                                + "                        </button>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-body\">\n"
+                                + "                        <p style=\"color:black;\">Apakah anda yakin menghapus komentar ini?</p>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-footer\">\n"
+                                + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + "'\">Hapus</button>\n"
+                                + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
+                                + "                    </div>\n"
+                                + "                </div>\n"
+                                + "            </div>\n"
+                                + "        </div>"
+                                + "</div></div>");
+                    } else {
+                        out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                                + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
+                                + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
+                                + "            <div class=\"modal-dialog\" role=\"document\">\n"
+                                + "                <div class=\"modal-content\">\n"
+                                + "                    <div class=\"modal-header\">\n"
+                                + "                        <h5 class=\"modal-title\" style=\"color:black;\">HAPUS KOMENTAR</h5>\n"
+                                + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
+                                + "                            <span aria-hidden=\"true\">&times;</span>\n"
+                                + "                        </button>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-body\">\n"
+                                + "                        <p style=\"color:black;\">Apakah anda yakin menghapus komentar ini?</p>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-footer\">\n"
+                                + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + "'\">Hapus</button>\n"
+                                + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
+                                + "                    </div>\n"
+                                + "                </div>\n"
+                                + "            </div>\n"
+                                + "        </div>"
+                                + "</div></div>");
+                    }
                 }
                 out.print(
                         "</div>\n"
@@ -448,18 +479,20 @@ public class tampilKomentar extends HttpServlet {
                 postingan p = new postingan();
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
-                out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
-                        + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(0).getIdUser(), komen.get(0).getIdAdmin()) + "</h5>\n"
-                        + "<div class=\"card-body text-white\">\n"
-                        + "<h6 class=\"card-title\">" + komen.get(0).getWaktuKomentar().toGMTString() + "</h6>\n"
-                        + "<p class=\"card-text\">" + komen.get(0).getIsiKomentar() + "</p>\n"
-                        + "</div></div>");
-                for (int i = 1; i < komen.size(); i++) {
-                    out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
-                            + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
-                            + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
-                            + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                for (int i = 0; i < komen.size(); i++) {
+                    if (i == 0) {
+                        out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                    } else {
+                        out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
+                    }
                     if (komen.get(i).getIdUser() != null) {
                         if (komen.get(i).getIdUser().equalsIgnoreCase(id)) {
                             out.print("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
@@ -584,32 +617,61 @@ public class tampilKomentar extends HttpServlet {
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
                 for (int i = 0; i < komen.size(); i++) {
-                    out.print("<<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
-                            + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
-                            + "<div class=\"card-body text-white\">\n"
-                            + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
-                            + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
-                            + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
-                            + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
-                            + "            <div class=\"modal-dialog\" role=\"document\">\n"
-                            + "                <div class=\"modal-content\">\n"
-                            + "                    <div class=\"modal-header\">\n"
-                            + "                        <h5 class=\"modal-title\" style=\"color:black;\">HAPUS KOMENTAR</h5>\n"
-                            + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
-                            + "                            <span aria-hidden=\"true\">&times;</span>\n"
-                            + "                        </button>\n"
-                            + "                    </div>\n"
-                            + "                    <div class=\"modal-body\">\n"
-                            + "                        <p style=\"color:black;\">Apakah anda yakin menghapus komentar ini?</p>\n"
-                            + "                    </div>\n"
-                            + "                    <div class=\"modal-footer\">\n"
-                            + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + "'\">Hapus</button>\n"
-                            + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
-                            + "                    </div>\n"
-                            + "                </div>\n"
-                            + "            </div>\n"
-                            + "        </div>"
-                            + "</div></div>");
+                    if (i == 0) {
+                        out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                                + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
+                                + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
+                                + "            <div class=\"modal-dialog\" role=\"document\">\n"
+                                + "                <div class=\"modal-content\">\n"
+                                + "                    <div class=\"modal-header\">\n"
+                                + "                        <h5 class=\"modal-title\" style=\"color:black;\">HAPUS KOMENTAR</h5>\n"
+                                + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
+                                + "                            <span aria-hidden=\"true\">&times;</span>\n"
+                                + "                        </button>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-body\">\n"
+                                + "                        <p style=\"color:black;\">Apakah anda yakin menghapus komentar ini?</p>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-footer\">\n"
+                                + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + "'\">Hapus</button>\n"
+                                + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
+                                + "                    </div>\n"
+                                + "                </div>\n"
+                                + "            </div>\n"
+                                + "        </div>"
+                                + "</div></div>");
+                    } else {
+                        out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
+                                + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
+                                + "<div class=\"card-body text-white\">\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
+                                + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
+                                + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
+                                + "            <div class=\"modal-dialog\" role=\"document\">\n"
+                                + "                <div class=\"modal-content\">\n"
+                                + "                    <div class=\"modal-header\">\n"
+                                + "                        <h5 class=\"modal-title\" style=\"color:black;\">HAPUS KOMENTAR</h5>\n"
+                                + "                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
+                                + "                            <span aria-hidden=\"true\">&times;</span>\n"
+                                + "                        </button>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-body\">\n"
+                                + "                        <p style=\"color:black;\">Apakah anda yakin menghapus komentar ini?</p>\n"
+                                + "                    </div>\n"
+                                + "                    <div class=\"modal-footer\">\n"
+                                + "                        <button type=\"submit\" class=\"btn btn-primary\" onclick=\"window.location.href='hapusKomentar?idKomentar=" + komen.get(i).getIdKomentar() + "'\">Hapus</button>\n"
+                                + "                        <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Batal</button>\n"
+                                + "                    </div>\n"
+                                + "                </div>\n"
+                                + "            </div>\n"
+                                + "        </div>"
+                                + "</div></div>");
+                    }
                 }
                 out.print(
                         "            </div>\n"
