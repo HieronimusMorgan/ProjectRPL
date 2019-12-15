@@ -62,22 +62,14 @@ public class HapusUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         pengguna p = new pengguna();
+        p = new pengguna();
         p.setName(request.getParameter("nama"));
         p.setUsername(request.getParameter("NIM"));
-        System.out.println(p.getName() + p.getUsername());
-        if (p.getName().equals("") || p.getUsername().equals("")) {
-            response.sendRedirect("KelolaUser1");
-        } else {
-            p = new pengguna();
-            p.setName(request.getParameter("nama"));
-            p.setUsername(request.getParameter("NIM"));
-            p.setPassword(request.getParameter("NIM"));
-            String id = p.getUsername().substring(0, 2) + "" + p.getUsername().substring(6, 9);
-            p.setIdUser(id);
-            op.hapusUser(p);
-            response.sendRedirect("KelolaUser");
-        }
-
+        p.setPassword(request.getParameter("NIM"));
+        String id = p.getUsername().substring(0, 2) + "" + p.getUsername().substring(6, 9);
+        p.setIdUser(id);
+        op.hapusUser(p);
+        response.sendRedirect("KelolaUser");
     }
 
     /**

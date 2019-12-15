@@ -67,7 +67,9 @@ public class TambahUser extends HttpServlet {
         System.out.println(p.getName()+p.getUsername());
         if (p.getName().equals("") || p.getUsername().equals("")) {
             response.sendRedirect("KelolaUser1");
-        } else {
+        } else if(p.getUsername().length() < 9 || p.getUsername().length() > 9){
+            response.sendRedirect("KelolaUser2");
+        }else {
             p = new pengguna();
             p.setName(request.getParameter("nama"));
             p.setUsername(request.getParameter("NIM"));
