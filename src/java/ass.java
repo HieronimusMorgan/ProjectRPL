@@ -24,6 +24,7 @@ public class ass {
         p.setIsi("hjgj");
         p.setIdAdmin("15562");
         a.editPostingan(p, "halo");
+        a.cariPostingan("a");
         
         postingan c = a.cariPostingan("157526182622815562");
         System.out.println(c.getIsi());
