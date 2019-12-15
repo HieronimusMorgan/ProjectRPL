@@ -55,6 +55,35 @@ public class operation {
         return null;
     }
 
+    public String namaPostingan(String idPostingan) {
+        try {
+            conn = new DatabaseConnection();
+            String query = "SELECT b.nameUser FROM postingan a, user b WHERE b.idUser LIKE "
+                    + "(SELECT idUser FROM postingan WHERE idPostingan LIKE '" + idPostingan + "') "
+                    + "AND a.idPostingan LIKE '" + idPostingan + "'";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            if (result.isFirst()) {
+                return result.getString("nameUser");
+            }
+            String query1 = "SELECT b.nameAdmin FROM postingan a, admin b WHERE b.idAdmin LIKE "
+                    + "(SELECT idAdmin FROM postingan WHERE idPostingan LIKE '" + idPostingan + "') "
+                    + "AND a.idPostingan LIKE '" + idPostingan + "'";
+            java.sql.Statement statement1 = conn.getConnection().createStatement();
+            java.sql.ResultSet result1 = statement1.executeQuery(query1);
+            result1.next();
+            if (result1.isFirst()) {
+                System.out.println("masuk");
+                return result1.getString("nameAdmin");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
+
     public boolean cekUser(pengguna a) {
         try {
             conn = new DatabaseConnection();
@@ -396,7 +425,7 @@ public class operation {
     public void ubahPassword(String id, String baru) {
         try {
             conn = new DatabaseConnection();
-            String sql = "UPDATE USER SET passwordUser='"+baru+"' WHERE idUser = '" + id+ "'";
+            String sql = "UPDATE USER SET passwordUser='" + baru + "' WHERE idUser = '" + id + "'";
             java.sql.Statement stat = conn.getConnection().createStatement();
             stat.executeUpdate(sql);
         } catch (SQLException ex) {

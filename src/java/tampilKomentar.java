@@ -79,8 +79,9 @@ public class tampilKomentar extends HttpServlet {
             session.setAttribute("idPostingan", idPostingan);
             if (a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
+                String postNama = a.namaPostingan(idPos);
                 postingan pos = a.cariPostingan(idPos);
-                System.out.println(pos.getIdUser() + " idUser");
+                System.out.println(postNama + " idUser");
                 System.out.println(id);
                 out.print("<html>\n"
                         + "\n"
@@ -138,7 +139,8 @@ public class tampilKomentar extends HttpServlet {
                         + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
                         + "<h5 class=\"card-header text-white\">Tambah Komen</h5>\n"
                         + "<div class=\"card-body\">\n"
-                        + "<div class=\"form-group\">\n");
+                        + "<div class=\"form-group\">\n"
+                        + "<h10 class=\"card-header text-white\">" + postNama + "</h10>\n");
                 if (pos.getIdUser() != null) {
                     if (pos.getIdUser().equalsIgnoreCase(id)) {
                         out.print("<text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
@@ -224,6 +226,8 @@ public class tampilKomentar extends HttpServlet {
             } else if (!a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
                 postingan pos = a.cariPostingan(idPos);
+                String postNama = a.namaPostingan(idPos);
+                System.out.println(idPos);
                 out.print("<html>\n"
                         + "\n"
                         + "<head>\n"
@@ -277,6 +281,7 @@ public class tampilKomentar extends HttpServlet {
                         + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
                         + "<h5 class=\"card-header text-white\">Tambah Komen</h5>\n"
                         + "<div class=\"card-body\">\n" + "                <div class=\"form-group\">\n"
+                        + "<h10 class=\"card-header text-white\">" + postNama + "</h10>\n"
                         + "<text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
                         + "</div>\n "
                         + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalPostingan\">Hapus Postingan</button>"
@@ -346,6 +351,7 @@ public class tampilKomentar extends HttpServlet {
             if (a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
                 postingan pos = a.cariPostingan(idPos);
+                String postNama = a.namaPostingan(idPos);
                 out.print("<html>\n"
                         + "\n"
                         + "<head>\n"
@@ -399,7 +405,8 @@ public class tampilKomentar extends HttpServlet {
                         + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
                         + "<h5 class=\"card-header text-white\">Tambah Komentar</h5>\n"
                         + "            <div class=\"card-body\">\n"
-                        + "                <div class=\"form-group\">\n");
+                        + "                <div class=\"form-group\">\n"
+                        + "<h10 class=\"card-header text-white\">" + postNama + "</h10>\n");
                 if (pos.getIdUser() != null) {
                     if (pos.getIdUser().equalsIgnoreCase(id)) {
                         out.print("<text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
@@ -486,6 +493,7 @@ public class tampilKomentar extends HttpServlet {
             } else if (!a.cekUser(pengguna)) {
                 String idPos = (String) session.getAttribute("idPostingan");
                 postingan pos = a.cariPostingan(idPos);
+                String postNama = a.namaPostingan(idPos);
                 out.print("<html>\n"
                         + "\n"
                         + "<head>\n"
@@ -541,9 +549,9 @@ public class tampilKomentar extends HttpServlet {
                         + "<div class=\"card bg-dark rounded-sm\">\n"
                         + "<form method=\"GET\" action=\"tambahKomentar\" id=\"usrform\">\n"
                         + "<h5 class=\"card-header text-white\">Tambah Komentar</h5>\n"
-                        + "            <h5 class=\"card-header\">Tambah Komentar</h5>\n"
                         + "            <div class=\"card-body\">\n"
                         + "                <div class=\"form-group\">\n"
+                        + "<h10 class=\"card-header text-white\">" + postNama + "</h10>\n"
                         + "                    <text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
                         + "                </div>\n "
                         + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalPostingan\">Hapus Postingan</button>"
