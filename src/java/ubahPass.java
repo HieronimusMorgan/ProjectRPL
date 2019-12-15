@@ -89,7 +89,7 @@ public class ubahPass extends HttpServlet {
                 + "<div class=\"sidebar bg-transparent\">\n"
                 + "<h1 class=\"text-white\">FaceIT </h1>                         "
                 + "<a class=\"text-white\" href=\"home\">Home</a>\n"
-                + "<a class=\"text-white\" href=\"AkunUser\">Akun</a>\n"
+                + "<a class=\"active\" class=\"text-white\" href=\"AkunUser\">Akun</a>\n"
                 + "<a class=\"text-white\" href=\"kontakInfo\">Kontak & Informasi</a>\n"
                 + "<a class=\"text-white\" href=\"Logout\">Logout</a>\n"
                 + "</div>\n"

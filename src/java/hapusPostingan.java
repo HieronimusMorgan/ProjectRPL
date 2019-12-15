@@ -71,10 +71,11 @@ public class hapusPostingan extends HttpServlet {
         System.out.println(pos.getIdPostingan() + "pstingan");
         a.hapusPostingan(pos);
         pengguna pengguna = a.operation(nama, pass);
+        
         if (a.cekUser(pengguna)) {
             response.sendRedirect("home");
-        } else {
-            response.sendRedirect("homeAdmin   ");
+        } else if (!a.cekUser(pengguna)) {
+            response.sendRedirect("homeAdmin");
         }
     }
 

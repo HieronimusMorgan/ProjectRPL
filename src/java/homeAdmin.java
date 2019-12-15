@@ -65,7 +65,10 @@ public class homeAdmin extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
-        String coba = (String) session.getAttribute("username");
+        String nama = (String) session.getAttribute("username");
+        String pass = (String) session.getAttribute("password");
+        String id = (String) session.getAttribute("iduser");
+        String nameuser = (String) session.getAttribute("nameuser");
         session.getAttribute("password");
         out.println("<html>\n"
                 + "\n"
@@ -92,7 +95,7 @@ public class homeAdmin extends HttpServlet {
                 + "        <center>\n"
                 + "            <h1  class=\"text-white\" >FaceIT</h1>\n"
                 + "        </center>\n"
-                + "<a  class=\"text-white\" href=\"homeAdmin\">Home</a>\n"
+                + "<a  class=\"active\" class=\"text-white\" href=\"homeAdmin\">Home</a>\n"
                 + "<a  class=\"text-white\" href=\"Akun\">Akun</a>\n"
                 + "<a  class=\"text-white\" href=\"KelolaUser\">Kelola User</a>\n"
                 + "<a  class=\"text-white\" href=\"Logout\">Logout</a>\n"
@@ -100,9 +103,12 @@ public class homeAdmin extends HttpServlet {
                 + "    <div class=\"carda\">\n"
                 + "        <div class=\"card bg-dark rounded-sm\">\n"
                 + "<form method=\"GET\" action=\"tambah\" id=\"usrform\">\n"
-                + "            <h5 class=\"card-header text-white\">Tambah Postingan</h5>\n"
-                + "            <div class=\"card-body\">\n"
-                + "                <div class=\"form-group\">\n"
+                + "<center>"
+                + "<h5 class=\"card-header  text-white\">Selamat Datang " + nameuser + " - " + nama + "</h5>\n"
+                + "</center>\n"
+                + "<div class=\"card-body\">\n"
+                + "<div class=\"form-group\">\n"
+                + "<h5 style='color:white;'>" + "Tambah Postingan" + "</h5>\n"
                 + "                    <textarea class=\"form-control rounded-0\" form=\"usrform\"  rows=\"3\" name=\"posting\" placeholder=\"Tulis disini ...\"></textarea>\n"
                 + "                </div>\n"
                 + "                <input class=\"btn btn-primary\" type=\"submit\" value=\"Tambah Postingan\">\n"

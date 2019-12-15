@@ -335,23 +335,6 @@ public class operation {
         }
     }
 
-    public void editPostingan(postingan p, String isi) {
-        try {
-            conn = new DatabaseConnection();
-            pengguna a = new pengguna();
-            a.setIdUser(p.getIdUser());
-
-            String sql = "UPDATE `postingan` SET `idPostingan`= '" + p.getIdPostingan()
-                    + "', `isiPostingan`= '" + isi
-                    + "' WHERE idPostingan = " + p.getIdPostingan();
-            java.sql.Statement stat = conn.getConnection().createStatement();
-            stat.executeUpdate(sql);
-            stat.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(operation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void hapusKomentar(komentar k) {
         try {
             conn = new DatabaseConnection();

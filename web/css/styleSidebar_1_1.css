@@ -37,9 +37,11 @@ body {
 }
 
 div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
+    margin-left: 370px;
+    margin-top: 20px;
+    padding: 0px 16px;
+    height: max-content;
+    width: max-content;
 }
 
 
@@ -64,15 +66,15 @@ div.content {
     }
 }
 
-* {
+/** {
     box-sizing: border-box;
-}
+}*/
 
 .leftcolumn {
     float: left;
     width: 100%;
-    margin-top: 1px;
-    z-index: 0;
+    margin-top: 50px;
+    z-index: 1;
 }
 
 
@@ -89,23 +91,24 @@ div.content {
 
 .cardi {
     background: white;
+    width: 100%;
     padding: 10px;
-    margin-top: -20px;
+    margin-top: 50px;
     margin-block-start: 1px;
     width: 100%;
 }
 
 .carda {
     position: fixed;
-    width: 85%;
+    width: 200%;
     margin-left: 200px;
     margin-right: -10px;
     z-index: 0;
-    margin-top: -25px;
+    margin-top: 250px;
 }
 
 .carda input.carda {
-    margin: 10px;
+    margin: 20px;
 }
 
 
