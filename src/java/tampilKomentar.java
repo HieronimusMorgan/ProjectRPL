@@ -142,7 +142,7 @@ public class tampilKomentar extends HttpServlet {
                         + "</center>\n"
                         + "<div class=\"card-body\">\n"
                         + "<div class=\"form-group\">\n"
-                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu()+"</h5>\n");
+                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu().toString()+"</h5>\n");
                 if (pos.getIdUser() != null) {
                     if (pos.getIdUser().equalsIgnoreCase(id)) {
                         out.print("<text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
@@ -182,13 +182,13 @@ public class tampilKomentar extends HttpServlet {
                         out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString() + "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     } else {
                         out.print("<div class=\"cardu  bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString() + "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     }
                     if (komen.get(i).getIdUser() != null) {
@@ -293,7 +293,7 @@ public class tampilKomentar extends HttpServlet {
                         + "<h5 class=\"card-header text-white\">Tambah Komentar - "+nameuser+" - "+nama+"</h5>\n"
                         + "</center>\n"
                         + "<div class=\"card-body\">\n" + "                <div class=\"form-group\">\n"
-                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu()+"</h5>\n"
+                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu().toString()+"</h5>\n"
                         + "<text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
                         + "</div>\n "
                         + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalPostingan\">Hapus Postingan</button>"
@@ -318,7 +318,7 @@ public class tampilKomentar extends HttpServlet {
                         out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString()+ "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                                 + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
                                 + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
@@ -345,7 +345,7 @@ public class tampilKomentar extends HttpServlet {
                         out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString()+ "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                                 + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
                                 + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
@@ -449,7 +449,7 @@ public class tampilKomentar extends HttpServlet {
                         + "</center>\n"
                         + "            <div class=\"card-body\">\n"
                         + "                <div class=\"form-group\">\n"
-                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu()+"</h5>\n");
+                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu().toString()+"</h5>\n");
                 if (pos.getIdUser() != null) {
                     if (pos.getIdUser().equalsIgnoreCase(id)) {
                         out.print("<text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
@@ -490,13 +490,13 @@ public class tampilKomentar extends HttpServlet {
                         out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString()+ "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     } else {
                         out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString()+ "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n");
                     }
                     if (komen.get(i).getIdUser() != null) {
@@ -604,7 +604,7 @@ public class tampilKomentar extends HttpServlet {
                         + "</center>\n"
                         + "            <div class=\"card-body\">\n"
                         + "                <div class=\"form-group\">\n"
-                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu()+"</h5>\n"
+                        + "<h5 style='color:white;'>Postingan : " + postNama + " "+pos.getWaktu().toString()+"</h5>\n"
                         + "                    <text readonly class=\"form-control\" id=\"exampleFormControlTextarea2\" rows=\"2\">" + pos.getIsi() + "</text>\n"
                         + "                </div>\n "
                         + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalPostingan\">Hapus Postingan</button>"
@@ -629,7 +629,7 @@ public class tampilKomentar extends HttpServlet {
                         out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString()+ "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                                 + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
                                 + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
@@ -656,7 +656,7 @@ public class tampilKomentar extends HttpServlet {
                         out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
                                 + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                                 + "<div class=\"card-body text-white\">\n"
-                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
+                                + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toString()+ "</h6>\n"
                                 + "<p class=\"card-text\">" + komen.get(i).getIsiKomentar() + "</p>\n"
                                 + "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalKomentar\">Hapus Komentar</button>\n"
                                 + "<div class=\"modal fade\" id=\"modalKomentar\" role=\"dioalog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">\n"
