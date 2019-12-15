@@ -175,8 +175,14 @@ public class tampilKomentar extends HttpServlet {
                 postingan p = new postingan();
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
-                for (int i = 0; i < komen.size(); i++) {
-                    out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
+                out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
+                        + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(0).getIdUser(), komen.get(0).getIdAdmin()) + "</h5>\n"
+                        + "<div class=\"card-body text-white\">\n"
+                        + "<h6 class=\"card-title\">" + komen.get(0).getWaktuKomentar().toGMTString() + "</h6>\n"
+                        + "<p class=\"card-text\">" + komen.get(0).getIsiKomentar() + "</p>\n"
+                        + "</div></div>");
+                for (int i = 1; i < komen.size(); i++) {
+                    out.print("<div class=\"cardu  bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
                             + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
@@ -442,8 +448,14 @@ public class tampilKomentar extends HttpServlet {
                 postingan p = new postingan();
                 p.setIdPostingan(idPostingan);
                 komen = a.tampilKomentar(p);
-                for (int i = 0; i < komen.size(); i++) {
-                    out.print("<div class=\"cardi bg-transparent border border-white rounded-lg\">\n"
+                out.print("<div class=\"cardi  bg-transparent border border-white rounded-lg\">\n"
+                        + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(0).getIdUser(), komen.get(0).getIdAdmin()) + "</h5>\n"
+                        + "<div class=\"card-body text-white\">\n"
+                        + "<h6 class=\"card-title\">" + komen.get(0).getWaktuKomentar().toGMTString() + "</h6>\n"
+                        + "<p class=\"card-text\">" + komen.get(0).getIsiKomentar() + "</p>\n"
+                        + "</div></div>");
+                for (int i = 1; i < komen.size(); i++) {
+                    out.print("<div class=\"cardu bg-transparent border border-white rounded-lg\">\n"
                             + "<h5 class=\"card-header text-white\">" + a.cariPengirim(komen.get(i).getIdUser(), komen.get(i).getIdAdmin()) + "</h5>\n"
                             + "<div class=\"card-body text-white\">\n"
                             + "<h6 class=\"card-title\">" + komen.get(i).getWaktuKomentar().toGMTString() + "</h6>\n"
