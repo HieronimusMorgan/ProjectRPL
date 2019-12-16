@@ -12,6 +12,7 @@ body {
 .table-box {
     width: min-content;
     height: min-content;
+    margin-top: 20%;
     background: rgba(1, 1, 1, 1);
     color: #fff;
     top: 135%;
@@ -246,6 +247,11 @@ textarea{
 .table-bordered th {
     color: white;
     
+}
+
+.jarak1{
+    padding: 100px;
+    margin-top: 20%;
 }
 
 
