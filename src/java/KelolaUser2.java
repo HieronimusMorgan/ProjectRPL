@@ -112,7 +112,7 @@ public class KelolaUser2 extends HttpServlet {
                 + "<br>"
                 + "<input type=\"submit\" name=\"Tambah\" value=\"Tambah\" onclick=\"form.action='TambahUser';\">\n"
                 + "<input type=\"submit\" name=\"Hapus\" value=\"Hapus\" onclick=\"form.action='HapusUser';\">\n"
-                + "<p style=\"color: red;\">*Masukan NIM kurang/lebih dari 9</p>"
+                + "<p style=\"color: red;\">*NIM kurang/lebih dari 9</p>"
                 + "</form>\n"
                 + "</div>\n"
                 + "</body>"
